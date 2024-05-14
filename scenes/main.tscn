@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://b0gg0dxthow4a"]
+
+[ext_resource type="PackedScene" uid="uid://ntwsvgp35vyg" path="res://scenes/world.tscn" id="1_5pmyt"]
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_7r4pn"]
+[ext_resource type="Script" path="res://scripts/clicker.gd" id="3_wiyey"]
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_7r4pn")
+
+[node name="World" parent="." instance=ExtResource("1_5pmyt")]
+
+[node name="UI" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+script = ExtResource("3_wiyey")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="CenterContainer" type="CenterContainer" parent="UI/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="LabelBananas" type="Label" parent="UI/MarginContainer/CenterContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 49
+text = "test"
+
+[connection signal="clicko" from="." to="World" method="_on_main_clicko"]

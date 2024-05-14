@@ -1,79 +1,40 @@
 extends Node3D
 
 
-var speed: int = 10
+var plane: Plane
+var map: DataMap
 
-# Called when the node enters the scene tree for the first time.
+var building = "res://scenes/components/building.tscn"
+
+@onready var camera = %Camera3D
+
+@export var selector: Node3D # The 'cursor'
+@export var selector_container: Node3D # Node that holds a preview of the structure
+
 func _ready():
-	print('con')
-	pass # Replace with function body.
+	map = DataMap.new()
+	plane = Plane(Vector3.UP, Vector3.ZERO)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
-
-
-func _input(event):
-	# if event.is_action_pressed("Up"):
-	# 	$Camera3D.position.z -= 0.2
-	# 	$Camera3D.position.x -= 0.2
-
-	#if event.is_action_pressed("Down"):
-		#$Camera3D.position.z += 0.2
-		#$Camera3D.position.x += 0.2
-#
-	#if event.is_action_pressed("Left"):
-		#$Camera3D.position.x -= 0.2
-		#$Camera3D.position.z += 0.2
-#
-	#if event.is_action_pressed("Right"):
-		#$Camera3D.position.x += 0.2
-		#$Camera3D.position.z -= 0.2
-
-	if event.is_action_pressed("ZoomIn"):
-		if $Camera3D.projection == Camera3D.PROJECTION_ORTHOGONAL:
-			$Camera3D.size += speed
-		else:
-			$Camera3D.fov += speed
+	var mouse_pos = get_viewport().get_mouse_position()
+	var world_position = plane.intersects_ray(
+		camera.project_ray_origin(mouse_pos),
+		camera.project_ray_normal(mouse_pos)
+	)
 	
-	if event.is_action_pressed("ZoomOut"):
-		if $Camera3D.projection == Camera3D.PROJECTION_ORTHOGONAL:
-			$Camera3D.size -= speed
-		else:
-			$Camera3D.fov -= speed
-
-	if event.is_action_pressed("CameraMode"):
-		if $Camera3D.projection == Camera3D.PROJECTION_ORTHOGONAL:
-			$Camera3D.projection = Camera3D.PROJECTION_PERSPECTIVE
-		else:
-			$Camera3D.projection = Camera3D.PROJECTION_ORTHOGONAL
-
-func _physics_process(delta):
-	var move = speed * delta
-
-	if Input.is_action_pressed("Up"):
-		$Camera3D.position.z -= move
-		$Camera3D.position.x -= move
+	var x_adjusted = round(world_position.x / 100)
+	var z_adjusted = round(world_position.z / 100)
 	
-	if Input.is_action_pressed("Down"):
-		$Camera3D.position.z += move
-		$Camera3D.position.x += move
-	
-	if Input.is_action_pressed("Left"):
-		$Camera3D.position.x -= move
-		$Camera3D.position.z += move
-	
-	if Input.is_action_pressed("Right"):
-		$Camera3D.position.x += move
-		$Camera3D.position.z -= move
+	var gridmap_position = Vector3(x_adjusted, 0.1, z_adjusted)
+	selector.position = lerp(selector.position, gridmap_position, delta * 40)
 
-func _on_input_event(camera, event, position, normal, shape_idx):
-	
-	var x = round(position.x) + 0.5
-	var y = round(position.z) + 0.5
-	#marker.transform.origin = Vector3(x, 0.01, y)
+func _on_clicko():
+	print('clocko')
 
 
-func _on_static_body_3d_input_event(camera, event, position, normal, shape_idx):
-	print('connard')
+func _on_main_clicko():
+	var building_res = load(building)
+	var build = building_res.instantiate()
+	
+	build.position = selector.position
+	get_node("/root/Main/World/GridMap").add_child(build)
