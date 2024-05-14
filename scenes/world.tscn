@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://ntwsvgp35vyg"]
+[gd_scene load_steps=9 format=3 uid="uid://ntwsvgp35vyg"]
 
+[ext_resource type="Script" path="res://scenes/world.gd" id="1_b8da8"]
 [ext_resource type="Texture2D" uid="uid://ciybgg2pjke6x" path="res://resources/Grass 1.png" id="1_nicou"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pxawc"]
@@ -21,11 +22,13 @@ albedo_texture = ExtResource("1_nicou")
 
 [node name="World" type="Node3D"]
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
+script = ExtResource("1_b8da8")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.00707107, -0.005, 0.005, 2.4663e-18, 0.00707107, 0.00707107, -0.00707107, -0.005, 0.005, 0, 0.503027, -0.159024)
+transform = Transform3D(0.707107, -0.5, 0.5, 2.4663e-16, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 2.08165e-12, 5, 2.08165e-12)
 environment = SubResource("Environment_0b0lo")
-fov = 179.0
+projection = 1
+size = 100.0
 
 [node name="Grid" type="MeshInstance3D" parent="."]
 transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0, 0)
