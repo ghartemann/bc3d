@@ -51,6 +51,7 @@ layout_mode = 2
 
 [node name="BuffSection" type="HBoxContainer" parent="UI/MarginContainer/VBoxContainer/TabContainer"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 
 [connection signal="clicko" from="." to="World" method="_on_main_clicko"]
