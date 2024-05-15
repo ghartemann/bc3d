@@ -28,6 +28,9 @@ func _process(delta):
 	
 	var gridmap_position = Vector3(x_adjusted, 0.001, z_adjusted)
 	selector.position = lerp(selector.position, gridmap_position, delta * 40)
+	
+	var test = %Banana3D.rotation
+	%Banana3D.rotation = Vector3(test.x, test.y + (1 * delta), test.z)
 
 
 func _on_main_clicko():

@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://7lmxod8kvv7a"]
+[gd_scene load_steps=4 format=3 uid="uid://7lmxod8kvv7a"]
 
 [ext_resource type="Script" path="res://scripts/building.gd" id="1_oswt5"]
-[ext_resource type="AudioStream" uid="uid://0tkcttcrfabg" path="res://assets/sounds/fx/happy-pop-2-185287.mp3" id="2_6yy7f"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_kppcc"]
 
@@ -20,4 +19,4 @@ mesh = SubResource("BoxMesh_kppcc")
 shape = SubResource("BoxShape3D_cbaqj")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_6yy7f")
+unique_name_in_owner = true
