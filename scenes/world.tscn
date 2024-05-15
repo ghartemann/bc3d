@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://ntwsvgp35vyg"]
+[gd_scene load_steps=10 format=3 uid="uid://ntwsvgp35vyg"]
 
 [ext_resource type="Script" path="res://scripts/World.gd" id="1_b8da8"]
 [ext_resource type="Script" path="res://scripts/Camera3D.gd" id="2_fu6h3"]
-[ext_resource type="Texture2D" uid="uid://brkwig8xnwy7c" path="res://resources/banane_s.png" id="3_7ihym"]
+[ext_resource type="Texture2D" uid="uid://brkwig8xnwy7c" path="res://assets/banane_s.png" id="3_02jmb"]
+[ext_resource type="Texture2D" uid="uid://bumhpsohecf4l" path="res://assets/selector.svg" id="4_5lv2s"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pxawc"]
 
@@ -18,12 +19,6 @@ sky = SubResource("Sky_wqyf0")
 albedo_color = Color(0.27852, 0.901819, 0.589934, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_jhhsm"]
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_ubhyy"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_86qy6"]
-transparency = 1
-albedo_color = Color(1, 1, 1, 0.439216)
 
 [node name="World" type="Node3D" node_paths=PackedStringArray("selector")]
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
@@ -48,7 +43,7 @@ mesh = SubResource("PlaneMesh_jhhsm")
 
 [node name="Sprite3D" type="Sprite3D" parent="GridMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2.08165e-12, 2.08165e-12, 2.82895, 2.08165e-12)
-texture = ExtResource("3_7ihym")
+texture = ExtResource("3_02jmb")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 50, 50)
@@ -58,8 +53,7 @@ light_indirect_energy = 4.033
 light_volumetric_fog_energy = 12.147
 light_angular_distance = 36.9
 
-[node name="Marker" type="MeshInstance3D" parent="."]
+[node name="Marker" type="Sprite3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 1, 2.08165e-12)
-mesh = SubResource("PlaneMesh_ubhyy")
-surface_material_override/0 = SubResource("StandardMaterial3D_86qy6")
+transform = Transform3D(2, 0, -3.04919e-23, -3.04919e-23, -8.74228e-08, -2, 0, 2, -8.74228e-08, 2.08165e-12, 0.1, 2.08165e-12)
+texture = ExtResource("4_5lv2s")

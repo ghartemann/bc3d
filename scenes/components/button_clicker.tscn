@@ -1,0 +1,89 @@
+[gd_scene load_steps=5 format=3 uid="uid://dfuynnl8yo4g4"]
+
+[ext_resource type="Script" path="res://scripts/ButtonClicker.gd" id="1_qwt4f"]
+[ext_resource type="Script" path="res://scripts/LabelValue.gd" id="2_hc5py"]
+[ext_resource type="Texture2D" uid="uid://brkwig8xnwy7c" path="res://assets/banane_s.png" id="2_kbusd"]
+[ext_resource type="Script" path="res://scripts/LabelPrice.gd" id="3_ma1m6"]
+
+[node name="ButtonClicker" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qwt4f")
+
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Tooltip" type="Panel" parent="Control"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/Tooltip"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Tooltip/MarginContainer"]
+layout_mode = 2
+
+[node name="LabelTooltip" type="Label" parent="Control/Tooltip/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="LabelTooltip2" type="Label" parent="Control/Tooltip/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="AspectRatioContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="AspectRatioContainer/Button"]
+layout_mode = 2
+offset_top = -54.0
+offset_right = 78.0
+offset_bottom = 132.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AspectRatioContainer/Button/MarginContainer"]
+layout_mode = 2
+
+[node name="ClickerPicture" type="TextureRect" parent="AspectRatioContainer/Button/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(78, 78)
+layout_mode = 2
+texture = ExtResource("2_kbusd")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="LabelText" type="Label" parent="AspectRatioContainer/Button/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="LabelValue" type="Label" parent="AspectRatioContainer/Button/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("2_hc5py")
+
+[node name="LabelPrice" type="Label" parent="AspectRatioContainer/Button/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("3_ma1m6")
+
+[node name="LabelOwned" type="Label" parent="AspectRatioContainer/Button/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2

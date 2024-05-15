@@ -1,0 +1,234 @@
+[
+	{
+		"name": {
+			"fr": "Cliqueur",
+			"en": "Clicker"
+		},
+		"description": {
+			"fr": "Un curseur qui clique tout seul. En plus on le voit faire. C'est pas formidable ça ?",
+			"en": "A cursor that clicks by itself. And you can see it clicking. Isn't that great ?"
+		},
+		"price": 50,
+		"price_multiplier": 1.13,
+		"value": 1,
+		"type": "bps",
+		"picture_path": "clickers/clicker.png"
+	},
+	{
+		"name": {
+			"fr": "Bananier",
+			"en": "Banana tree"
+		},
+		"description": {
+			"fr": "Un bananier qui produit des bananes. C'est un arbre. Il n'y a pas mille choses à dire dessus.",
+			"en": "A banana tree that produces bananas. It's a tree. There's not much to say about it."
+		},
+		"price": 200,
+		"price_multiplier": 1.14,
+		"value": 2,
+		"type": "bps",
+		"picture_path": "clickers/leaf.png"
+	},
+	{
+		"name": {
+			"fr": "Macaque",
+			"en": "Macaque"
+		},
+		"description": {
+			"fr": "Un macaque qui ramasse des bananes. Il est très efficace, d'autant que le code du travail ne s'applique pas à lui (puisque c'est un macaque).",
+			"en": "A macaque that picks up bananas. He's very efficient, especially since labor laws don't apply to him (because he's a macaque)."
+		},
+		"price": 1200,
+		"price_multiplier": 1.15,
+		"value": 7,
+		"type": "bps",
+		"picture_path": "clickers/macaque.png"
+	},
+	{
+		"name": {
+			"fr": "Gorille",
+			"en": "Gorilla"
+		},
+		"description": {
+			"fr": "Un gorille qui fait à peu près la même chose que le macaque, mais en plus gros. Et en plus cher.",
+			"en": "A macaque that picks up bananas. He's very efficient, especially since labor laws don't apply to him (because he's a macaque)."
+		},
+		"price": 9000,
+		"price_multiplier": 1.15,
+		"value": 30,
+		"type": "bps",
+		"picture_path": "clickers/gorilla.png"
+	},
+	{
+		"name": {
+			"fr": "Publicité",
+			"en": "Ad"
+		},
+		"description": {
+			"fr": "Une publicité qui vous rapporte de l'argent (enfin des bananes, ne commencez pas avec la sémantique). C'est un peu comme un bananier mais en plus moche, c'est également un peu comme un macaque mais sans les poils et le mauvais caractère.",
+			"en": "An ad that makes you money (well, bananas, don't start with semantics). It's a bit like a banana tree but uglier, it's also a bit like a macaque but without the hair and the bad temper."
+		},
+		"price": 49999,
+		"price_multiplier": 1.15,
+		"value": 99,
+		"type": "bps",
+		"picture_path": "clickers/adverts.png"
+	},
+	{
+		"name": {
+			"fr": "Toucan muet",
+			"en": "Mute toucan"
+		},
+		"description": {
+			"fr": "Un toucan qui ne parle pas, ce qui le rend beaucoup plus agréable qu'un autre qui parlerait. Il effectue ses tâches avec beaucoup de sérieux et de concentration. À la rédac, on aime.",
+			"en": "A toucan that doesn't talk, which makes him much more pleasant than another one that would. He performs his tasks with a lot of seriousness and concentration. We like it."
+		},
+		"price": 170000,
+		"price_multiplier": 1.16,
+		"value": 300,
+		"type": "bps",
+		"picture_path": "clickers/toucan.png"
+	},
+	{
+		"name": {
+			"fr": "Paresseux",
+			"en": "Sloth"
+		},
+		"description": {
+			"fr": "Un paresseux qui, paradoxalement, ramasse des bananes avec une rapidité déconcertante. C'est assez peu logique mais que voulez-vous, il faut bien trouver des idées dans le thème.",
+			"en": "A sloth that, paradoxically, picks up bananas with disconcerting speed. It's not very logical but what can you do, you have to come up with ideas in the theme."
+		},
+		"price": 320000,
+		"price_multiplier": 1.16,
+		"value": 500,
+		"type": "bps",
+		"picture_path": "clickers/sloth.png"
+	},
+	{
+		"name": {
+			"fr": "Bananeraie",
+			"en": "Banana plantation"
+		},
+		"description": {
+			"fr": "Une bananeraie composée d'un certain nombre de bananiers. Et qui donc, c'est plutôt logique, produit beaucoup plus de bananes. Pourquoi en acheter un quand on peut en acheter toute une collection ? Vous faites bien ce que vous voulez, mais c'est clairement plus avantageux.",
+			"en": "A banana plantation made up of a certain number of banana trees. And therefore, it's rather logical, produces a lot more bananas. Why buy one when you can buy a whole collection ? You do what you want, but it's clearly more advantageous."
+		},
+		"price": 800000,
+		"price_multiplier": 1.16,
+		"value": 1000,
+		"type": "bps",
+		"picture_path": "clickers/plantation.png"
+	},
+	{
+		"name": {
+			"fr": "Fusil à bananes",
+			"en": "Banana gun"
+		},
+		"description": {
+			"fr": "Un fusil. Pour chasser les bananes sauvages. Ça paraît assez évident.",
+			"en": "A gun. To hunt wild bananas. It seems pretty obvious."
+		},
+		"price": 1776420,
+		"price_multiplier": 1.17,
+		"value": 1776,
+		"type": "bps",
+		"picture_path": "clickers/rifle.png"
+	},
+	{
+		"name": {
+			"fr": "Bateau cargo",
+			"en": "Cargo ship"
+		},
+		"description": {
+			"fr": "Un bateau qui transporte des bananes, pourquoi pas. Mais si on suit le fil rouge (et quel fil !) de nos précédents achats, ce bateau ne devrait-il pas lui-même produire des bananes ? On a pas la réponse. Ce jeu commence à prendre de grosses libertés vis-à-vis du lore, c'est assez irritant.",
+			"en": "A boat that transports bananas, why not. But if we follow the red thread (and what a thread !) of our previous purchases, shouldn't this boat itself produce bananas ? We don't have the answer. This game is starting to take big liberties with the lore, it's quite irritating."
+		},
+		"price": 3100000,
+		"price_multiplier": 1.18,
+		"value": 2800,
+		"type": "bps",
+		"picture_path": "clickers/boat.png"
+	},
+	{
+		"name": {
+			"fr": "Boeing 737 Max",
+			"en": "Boeing 737 Max"
+		},
+		"description": {
+			"fr": "Un avion qui transporte des bananes. Il est très rapide, mais il est très peu éco-reponsable et il a tendance à s'écraser. Souvent. C'est un peu dommage, mais bon, on ne peut pas tout avoir.",
+			"en": "A plane that transports bananas. It's very fast, but it's not very eco-friendly and it tends to crash. Often. It's a bit of a shame, but hey, you can't have everything."
+		},
+		"price": 4000000,
+		"price_multiplier": 1.19,
+		"value": 4000,
+		"type": "bps",
+		"picture_path": "clickers/airplane.png"
+	},
+	{
+		"name": {
+			"fr": "Trou de ver",
+			"en": "Wormhole"
+		},
+		"description": {
+			"fr": "Un trou de ver qui vous permet de voyager dans le temps et l'espace. Vous pouvez ainsi acheter des bananes dans d'autres galaxies, ou alors encore mieux dans le futur, pour les revendre dans le passé. C'est un peu comme l'investissement locatif mais en plus compliqué en plus intéressant.",
+			"en": "A wormhole that allows you to travel through time and space. You can buy bananas in other galaxies, or even better in the future, to resell them in the past. It's a bit like rental investment but more complicated and more interesting."
+		},
+		"price": 15000000000,
+		"price_multiplier": 1.23,
+		"value": 10000,
+		"type": "bps",
+		"picture_path": "clickers/wormhole.png"
+	},
+	
+
+
+
+
+
+
+	{
+		"name": {
+			"fr": "Meilleur curseur",
+			"en": "Better cursor"
+		},
+		"description": {
+			"fr": "Un curseur plus performant.",
+			"en": "A more efficient cursor."
+		},
+		"price": 500,
+		"price_multiplier": 1.15,
+		"value": 1,
+		"type": "bpc",
+		"picture_path": "buffs/hand.png"
+	},
+	{
+		"name": {
+			"fr": "Curseur en béton armé",
+			"en": "Reinforced concrete cursor"
+		},
+		"description": {
+			"fr": "Un curseur en béton armé.",
+			"en": "A reinforced concrete cursor."
+		},
+		"price": 2000,
+		"price_multiplier": 1.15,
+		"value": 5,
+		"type": "bpc",
+		"picture_path": "buffs/solidcursor.png"
+	},
+		{
+		"name": {
+			"fr": "Cheat de ouf",
+			"en": "Cheat de ouf"
+		},
+		"description": {
+			"fr": "Cheat de ouf",
+			"en": "Cheat de ouf"
+		},
+		"price": 1,
+		"price_multiplier": 1,
+		"value": 500,
+		"type": "bpc",
+		"picture_path": "ui/devil.png"
+	}
+]

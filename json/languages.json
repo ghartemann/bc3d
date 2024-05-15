@@ -1,0 +1,32 @@
+[
+    {
+        "country": "France",
+        "code": "FR",
+        "language": "fr",
+        "flag": "🇫🇷"
+    },
+    {
+        "country": "Germany",
+        "code": "DE",
+        "language": "de",
+        "flag": "🇩🇪"
+    },
+    {
+        "country": "Italy",
+        "code": "IT",
+        "language": "it",
+        "flag": "🇮🇹"
+    },
+    {
+        "country": "Spain",
+        "code": "ES",
+        "language": "es",
+        "flag": "🇪🇸"
+    },
+    {
+        "country": "United Kingdom",
+        "code": "GB",
+        "language": "en",
+        "flag": "🇬🇧"
+    }
+]

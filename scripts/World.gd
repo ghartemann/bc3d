@@ -22,6 +22,8 @@ func _process(delta):
 		camera.project_ray_normal(mouse_pos)
 	)
 	
+	print(world_position)
+	
 	var x_adjusted = round(world_position.x / 100)
 	var z_adjusted = round(world_position.z / 100)
 	
