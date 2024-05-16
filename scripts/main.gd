@@ -1,27 +1,18 @@
 extends Node3D
 
 
-signal clicko
-
-
 var button_clicker: PackedScene = preload("res://scenes/components/button_clicker.tscn")
 var import: Script = preload("res://scripts/utils/import.gd")
 
 var language = 'fr'
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
 	instantiate_buttons()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
-
-func _on_click():
-	$UI.increment_via_bpc()
-	%LabelBananas.text = str($UI.bananas)
-	clicko.emit()
-
+	
 
 func instantiate_buttons():
 	var imported_clickers = import.import_json("res://json/clickers.json")

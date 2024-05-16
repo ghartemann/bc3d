@@ -9,6 +9,3 @@ func _ready():
 
 	%AudioStreamPlayer.stream = load("res://assets/sounds/fx/pop/" + audio_stream)
 	%AudioStreamPlayer.play()
-
-func _process(delta):
-	pass

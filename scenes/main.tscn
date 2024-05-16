@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://b0gg0dxthow4a"]
+[gd_scene load_steps=5 format=3 uid="uid://b8qod0cq5cdvk"]
 
 [ext_resource type="PackedScene" uid="uid://ntwsvgp35vyg" path="res://scenes/world.tscn" id="1_5pmyt"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_7r4pn"]
+[ext_resource type="Script" path="res://scenes/Control.gd" id="3_3r0db"]
 [ext_resource type="Script" path="res://scripts/clicker.gd" id="3_wiyey"]
 
 [node name="Main" type="Node3D"]
@@ -9,14 +10,26 @@ script = ExtResource("1_7r4pn")
 
 [node name="World" parent="." instance=ExtResource("1_5pmyt")]
 
-[node name="UI" type="CanvasLayer" parent="."]
-unique_name_in_owner = true
-script = ExtResource("3_wiyey")
-
-[node name="MarginContainer" type="MarginContainer" parent="UI"]
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 430.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_3r0db")
+
+[node name="UI" type="CanvasLayer" parent="Control"]
+unique_name_in_owner = true
+script = ExtResource("3_wiyey")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -88.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 32
@@ -24,34 +37,41 @@ theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 32
 theme_override_constants/margin_bottom = 32
 
-[node name="CenterContainer" type="CenterContainer" parent="UI/MarginContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="Control/MarginContainer"]
 visible = false
 layout_mode = 2
-size_flags_vertical = 8
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/CenterContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/CenterContainer"]
 layout_mode = 2
 
-[node name="LabelBananas" type="Label" parent="UI/MarginContainer/CenterContainer/VBoxContainer"]
+[node name="LabelBananas" type="Label" parent="Control/MarginContainer/CenterContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 49
 text = "test"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer"]
 layout_mode = 2
 
-[node name="TabContainer" type="TabContainer" parent="UI/MarginContainer/VBoxContainer"]
+[node name="Panel" type="Panel" parent="Control/MarginContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.4
+
+[node name="TabContainer" type="TabContainer" parent="Control/MarginContainer/VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_vertical = 8
 
-[node name="ClickerSection" type="HBoxContainer" parent="UI/MarginContainer/VBoxContainer/TabContainer"]
+[node name="ClickerSection" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer/Panel/TabContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="BuffSection" type="HBoxContainer" parent="UI/MarginContainer/VBoxContainer/TabContainer"]
+[node name="BuffSection" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer/Panel/TabContainer"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
-
-[connection signal="clicko" from="." to="World" method="_on_main_clicko"]

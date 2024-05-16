@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://ntwsvgp35vyg"]
+[gd_scene load_steps=30 format=3 uid="uid://ntwsvgp35vyg"]
 
 [ext_resource type="Script" path="res://scripts/World.gd" id="1_b8da8"]
 [ext_resource type="Script" path="res://scripts/Camera3D.gd" id="2_fu6h3"]
@@ -35,7 +35,7 @@ albedo_color = Color(0.278431, 0.901961, 0.25098, 1)
 albedo_color = Color(0.123426, 0.115475, 0.00803375, 1)
 albedo_texture_force_srgb = true
 
-[sub_resource type="Resource" id="Resource_isnvu"]
+[sub_resource type="Resource" id="Resource_5s21s"]
 script = ExtResource("10_1tlte")
 amount = 1000
 enabled = true
@@ -44,7 +44,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 1
 
-[sub_resource type="Resource" id="Resource_3rsvf"]
+[sub_resource type="Resource" id="Resource_fal04"]
 script = ExtResource("11_6bh1b")
 position = Vector3(2.08167e-15, 2.08167e-15, 2.08167e-15)
 rotation = Vector3(20, 360, 20)
@@ -55,7 +55,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_0jmt7"]
+[sub_resource type="Resource" id="Resource_l6dqi"]
 script = ExtResource("12_dii7j")
 iterations = 3
 offset_step = 0.2
@@ -67,7 +67,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_pu5sh"]
+[sub_resource type="Resource" id="Resource_w34fv"]
 script = ExtResource("13_u6dke")
 ray_direction = Vector3(0, -1, 0)
 ray_length = 5.0
@@ -83,13 +83,17 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_p0toj"]
+[sub_resource type="Resource" id="Resource_jikwh"]
 script = ExtResource("9_08a6j")
-stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_isnvu"), SubResource("Resource_3rsvf"), SubResource("Resource_0jmt7"), SubResource("Resource_pu5sh")])
+stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_5s21s"), SubResource("Resource_fal04"), SubResource("Resource_l6dqi"), SubResource("Resource_w34fv")])
 
 [sub_resource type="Resource" id="Resource_eijgb"]
 script = ExtResource("16_1tik2")
 size = Vector3(1, 1, 1)
+
+[sub_resource type="Resource" id="Resource_5bg0t"]
+script = ExtResource("16_1tik2")
+size = Vector3(5, 5, 5)
 
 [node name="World" type="Node3D" node_paths=PackedStringArray("selector")]
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
@@ -98,7 +102,7 @@ selector = NodePath("Marker")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(0.707107, -0.5, 0.5, 2.4663e-16, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 5, 5, 5)
+transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 5, 5, 5)
 environment = SubResource("Environment_0b0lo")
 projection = 1
 size = 800.0
@@ -127,7 +131,7 @@ texture = ExtResource("3_02jmb")
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 visible = false
 
-[node name="lowpolypractice-pyramid" parent="GridMap" instance=ExtResource("6_xb5pb")]
+[node name="Pyramid" parent="GridMap" instance=ExtResource("6_xb5pb")]
 transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -148,7 +152,7 @@ stream = ExtResource("5_b1g5j")
 
 [node name="ProtonScatter" type="Node3D" parent="."]
 script = ExtResource("8_5y6nd")
-modifier_stack = SubResource("Resource_p0toj")
+modifier_stack = SubResource("Resource_jikwh")
 Performance/use_chunks = true
 Performance/chunk_dimensions = Vector3(15, 15, 15)
 
@@ -158,6 +162,11 @@ source_scale_multiplier = 0.02
 path = "res://assets/packs/lowpolypractice-plant.blend"
 
 [node name="ScatterShape" type="Node3D" parent="ProtonScatter"]
-transform = Transform3D(30, 0, -8.94069e-07, 0, 1, 0, 8.94069e-07, 0, 30, 0, 0, 0)
+transform = Transform3D(30, 0, -8.94069e-07, 0, 2, 0, 8.94069e-07, 0, 30, 0, 0, 0)
 script = ExtResource("15_e5atf")
 shape = SubResource("Resource_eijgb")
+
+[node name="Exclusion" type="Node3D" parent="ProtonScatter"]
+script = ExtResource("15_e5atf")
+negative = true
+shape = SubResource("Resource_5bg0t")

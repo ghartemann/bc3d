@@ -8,8 +8,11 @@ func _ready():
 	click.connect(Callable(get_node("/root/Main"), "_on_click"))
 
 func _input(event):
-	if event.is_action_pressed("click"):
-		click.emit()
+	if event.is_action_pressed("CamL"):
+		rotation_degrees.y -= 90
+
+	if event.is_action_pressed("CamR"):
+		rotation_degrees.y += 90
 
 func _physics_process(delta):
 	var move = speed * delta
