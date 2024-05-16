@@ -1,27 +1,95 @@
-[gd_scene load_steps=13 format=3 uid="uid://ntwsvgp35vyg"]
+[gd_scene load_steps=29 format=3 uid="uid://ntwsvgp35vyg"]
 
 [ext_resource type="Script" path="res://scripts/World.gd" id="1_b8da8"]
 [ext_resource type="Script" path="res://scripts/Camera3D.gd" id="2_fu6h3"]
 [ext_resource type="Texture2D" uid="uid://brkwig8xnwy7c" path="res://assets/banane_s.png" id="3_02jmb"]
 [ext_resource type="Texture2D" uid="uid://bumhpsohecf4l" path="res://assets/selector.svg" id="4_5lv2s"]
+[ext_resource type="PackedScene" uid="uid://dtfmbb4q38lok" path="res://assets/packs/tree1.blend" id="4_krp4l"]
 [ext_resource type="AudioStream" uid="uid://cu2ycpfvbjoqr" path="res://assets/sounds/ambience/nature-soundstropicaljunglebirds-108380.mp3" id="5_b1g5j"]
 [ext_resource type="PackedScene" uid="uid://bqcp70jj483f2" path="res://assets/packs/lowpolypractice-pyramid.blend" id="6_xb5pb"]
-[ext_resource type="PackedScene" uid="uid://ckawblumr1ftg" path="res://assets/packs/lowpolypractice-plant.blend" id="7_37tjj"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_pxawc"]
-
-[sub_resource type="Sky" id="Sky_wqyf0"]
-sky_material = SubResource("ShaderMaterial_pxawc")
+[ext_resource type="Script" path="res://addons/proton_scatter/src/scatter.gd" id="8_5y6nd"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/stack/modifier_stack.gd" id="9_08a6j"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/create_inside_random.gd" id="10_1tlte"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/randomize_transforms.gd" id="11_6bh1b"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/relax.gd" id="12_dii7j"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/project_on_geometry.gd" id="13_u6dke"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/scatter_item.gd" id="14_0tydt"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/scatter_shape.gd" id="15_e5atf"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/shapes/box_shape.gd" id="16_1tik2"]
 
 [sub_resource type="Environment" id="Environment_0b0lo"]
 background_mode = 1
 background_color = Color(0.66459, 0.775854, 1, 1)
-sky = SubResource("Sky_wqyf0")
+background_energy_multiplier = 1.5
+
+[sub_resource type="MeshLibrary" id="MeshLibrary_uqh77"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xiof3"]
 albedo_color = Color(0.278431, 0.901961, 0.25098, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_jhhsm"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_kh3ub"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vwi5m"]
+albedo_color = Color(0.123426, 0.115475, 0.00803375, 1)
+albedo_texture_force_srgb = true
+
+[sub_resource type="Resource" id="Resource_isnvu"]
+script = ExtResource("10_1tlte")
+amount = 1000
+enabled = true
+override_global_seed = false
+custom_seed = 0
+restrict_height = true
+reference_frame = 1
+
+[sub_resource type="Resource" id="Resource_3rsvf"]
+script = ExtResource("11_6bh1b")
+position = Vector3(2.08167e-15, 2.08167e-15, 2.08167e-15)
+rotation = Vector3(20, 360, 20)
+scale = Vector3(0.1, 0.1, 0.1)
+enabled = false
+override_global_seed = false
+custom_seed = 0
+restrict_height = false
+reference_frame = 2
+
+[sub_resource type="Resource" id="Resource_0jmt7"]
+script = ExtResource("12_dii7j")
+iterations = 3
+offset_step = 0.2
+consecutive_step_multiplier = 0.75
+use_computeshader = true
+enabled = true
+override_global_seed = false
+custom_seed = 0
+restrict_height = true
+reference_frame = 0
+
+[sub_resource type="Resource" id="Resource_pu5sh"]
+script = ExtResource("13_u6dke")
+ray_direction = Vector3(0, -1, 0)
+ray_length = 5.0
+ray_offset = 5.0
+remove_points_on_miss = false
+align_with_collision_normal = false
+max_slope = 90.0
+collision_mask = 1
+exclude_mask = 0
+enabled = true
+override_global_seed = false
+custom_seed = 0
+restrict_height = false
+reference_frame = 0
+
+[sub_resource type="Resource" id="Resource_p0toj"]
+script = ExtResource("9_08a6j")
+stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_isnvu"), SubResource("Resource_3rsvf"), SubResource("Resource_0jmt7"), SubResource("Resource_pu5sh")])
+
+[sub_resource type="Resource" id="Resource_eijgb"]
+script = ExtResource("16_1tik2")
+size = Vector3(1, 1, 1)
 
 [node name="World" type="Node3D" node_paths=PackedStringArray("selector")]
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
@@ -33,11 +101,11 @@ unique_name_in_owner = true
 transform = Transform3D(0.707107, -0.5, 0.5, 2.4663e-16, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 5, 5, 5)
 environment = SubResource("Environment_0b0lo")
 projection = 1
-size = 1000.0
-near = 0.001
+size = 800.0
 script = ExtResource("2_fu6h3")
 
 [node name="GridMap" type="GridMap" parent="."]
+mesh_library = SubResource("MeshLibrary_uqh77")
 cell_size = Vector3(2, 1, 2)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="GridMap"]
@@ -45,13 +113,25 @@ transform = Transform3D(15, 0, 0, 0, 1, 0, 0, 0, 15, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_xiof3")
 mesh = SubResource("PlaneMesh_jhhsm")
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="GridMap/MeshInstance3D"]
+transform = Transform3D(2, -1.74393e-15, 6.97574e-16, 6.97574e-16, 5, -6.97574e-16, -6.97574e-16, 1.74393e-15, 2, 2.08165e-12, -2.51, 2.08165e-12)
+mesh = SubResource("BoxMesh_kh3ub")
+surface_material_override/0 = SubResource("StandardMaterial3D_vwi5m")
+
 [node name="Banana3D" type="Sprite3D" parent="GridMap"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2.08165e-12, 2.08165e-12, 4, 2.08165e-12)
 texture = ExtResource("3_02jmb")
 
+[node name="tree1" parent="GridMap" instance=ExtResource("4_krp4l")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+visible = false
+
+[node name="lowpolypractice-pyramid" parent="GridMap" instance=ExtResource("6_xb5pb")]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 50, 50)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200, 200, 200)
 light_color = Color(1, 0.917647, 0.533333, 1)
 light_energy = 4.564
 light_indirect_energy = 4.033
@@ -66,11 +146,18 @@ texture = ExtResource("4_5lv2s")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_b1g5j")
 
-[node name="lowpolypractice-pyramid" parent="." instance=ExtResource("6_xb5pb")]
-transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
+[node name="ProtonScatter" type="Node3D" parent="."]
+script = ExtResource("8_5y6nd")
+modifier_stack = SubResource("Resource_p0toj")
+Performance/use_chunks = true
+Performance/chunk_dimensions = Vector3(15, 15, 15)
 
-[node name="lowpolypractice-plant" parent="." instance=ExtResource("7_37tjj")]
-transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, -4.21151, 0, 0.0334717)
+[node name="ScatterItem" type="Node3D" parent="ProtonScatter"]
+script = ExtResource("14_0tydt")
+source_scale_multiplier = 0.02
+path = "res://assets/packs/lowpolypractice-plant.blend"
 
-[node name="lowpolypractice-plant2" parent="." instance=ExtResource("7_37tjj")]
-transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, -4.21151, 0, 0.0334717)
+[node name="ScatterShape" type="Node3D" parent="ProtonScatter"]
+transform = Transform3D(30, 0, -8.94069e-07, 0, 1, 0, 8.94069e-07, 0, 30, 0, 0, 0)
+script = ExtResource("15_e5atf")
+shape = SubResource("Resource_eijgb")
