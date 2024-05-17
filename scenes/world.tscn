@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://ntwsvgp35vyg"]
+[gd_scene load_steps=33 format=3 uid="uid://ntwsvgp35vyg"]
 
 [ext_resource type="Script" path="res://scripts/World.gd" id="1_b8da8"]
 [ext_resource type="Script" path="res://scripts/Camera3D.gd" id="2_fu6h3"]
@@ -10,10 +10,11 @@
 [ext_resource type="Script" path="res://addons/proton_scatter/src/scatter.gd" id="8_5y6nd"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/stack/modifier_stack.gd" id="9_08a6j"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/create_inside_random.gd" id="10_1tlte"]
-[ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/randomize_transforms.gd" id="11_6bh1b"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/relax.gd" id="12_dii7j"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/randomize_rotation.gd" id="13_qlagu"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/project_on_geometry.gd" id="13_u6dke"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/scatter_item.gd" id="14_0tydt"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/remove_outside_shapes.gd" id="14_w7m3u"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/scatter_shape.gd" id="15_e5atf"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/shapes/box_shape.gd" id="16_1tik2"]
 
@@ -22,7 +23,15 @@ background_mode = 1
 background_color = Color(0.66459, 0.775854, 1, 1)
 background_energy_multiplier = 1.5
 
+[sub_resource type="BoxMesh" id="BoxMesh_wanfa"]
+
 [sub_resource type="MeshLibrary" id="MeshLibrary_uqh77"]
+item/0/name = "Ground"
+item/0/mesh = SubResource("BoxMesh_wanfa")
+item/0/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/0/shapes = []
+item/0/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/0/navigation_layers = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xiof3"]
 albedo_color = Color(0.278431, 0.901961, 0.25098, 1)
@@ -35,7 +44,7 @@ albedo_color = Color(0.278431, 0.901961, 0.25098, 1)
 albedo_color = Color(0.123426, 0.115475, 0.00803375, 1)
 albedo_texture_force_srgb = true
 
-[sub_resource type="Resource" id="Resource_5s21s"]
+[sub_resource type="Resource" id="Resource_b8art"]
 script = ExtResource("10_1tlte")
 amount = 1000
 enabled = true
@@ -44,18 +53,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 1
 
-[sub_resource type="Resource" id="Resource_fal04"]
-script = ExtResource("11_6bh1b")
-position = Vector3(2.08167e-15, 2.08167e-15, 2.08167e-15)
-rotation = Vector3(20, 360, 20)
-scale = Vector3(0.1, 0.1, 0.1)
-enabled = false
-override_global_seed = false
-custom_seed = 0
-restrict_height = false
-reference_frame = 2
-
-[sub_resource type="Resource" id="Resource_l6dqi"]
+[sub_resource type="Resource" id="Resource_eq0l0"]
 script = ExtResource("12_dii7j")
 iterations = 3
 offset_step = 0.2
@@ -67,7 +65,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_w34fv"]
+[sub_resource type="Resource" id="Resource_24s5c"]
 script = ExtResource("13_u6dke")
 ray_direction = Vector3(0, -1, 0)
 ray_length = 5.0
@@ -83,9 +81,28 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_jikwh"]
+[sub_resource type="Resource" id="Resource_6lfl4"]
+script = ExtResource("13_qlagu")
+rotation = Vector3(2.08167e-15, 360, 2.08167e-15)
+snap_angle = Vector3(0, 0, 0)
+enabled = true
+override_global_seed = false
+custom_seed = 0
+restrict_height = false
+reference_frame = 2
+
+[sub_resource type="Resource" id="Resource_3drto"]
+script = ExtResource("14_w7m3u")
+negative_shapes_only = false
+enabled = true
+override_global_seed = false
+custom_seed = 0
+restrict_height = false
+reference_frame = 0
+
+[sub_resource type="Resource" id="Resource_o73xr"]
 script = ExtResource("9_08a6j")
-stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_5s21s"), SubResource("Resource_fal04"), SubResource("Resource_l6dqi"), SubResource("Resource_w34fv")])
+stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_b8art"), SubResource("Resource_eq0l0"), SubResource("Resource_24s5c"), SubResource("Resource_6lfl4"), SubResource("Resource_3drto")])
 
 [sub_resource type="Resource" id="Resource_eijgb"]
 script = ExtResource("16_1tik2")
@@ -96,7 +113,7 @@ script = ExtResource("16_1tik2")
 size = Vector3(5, 5, 5)
 
 [node name="World" type="Node3D" node_paths=PackedStringArray("selector")]
-transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 2.08165e-12, 2.08165e-12, 2.08165e-12)
 script = ExtResource("1_b8da8")
 selector = NodePath("Marker")
 
@@ -110,10 +127,15 @@ script = ExtResource("2_fu6h3")
 
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = SubResource("MeshLibrary_uqh77")
-cell_size = Vector3(2, 1, 2)
+cell_size = Vector3(1, 1, 1)
+data = {
+"cells": PackedInt32Array(44, 65529, 0, 46, 65522, 0, 48, 65512, 0, -65535, 10, 196608, -65535, 9, 196608, -65534, 9, 196608, -65533, 9, 196608, -65533, 10, 196608, -65533, 11, 196608, -65534, 11, 196608, -65534, 10, 196608, -7, 65525, 196608, -8, 65525, 196608, -6, 65526, 196608, -3, 65528, 196608, -9, 65523, 196608, -8, 65524, 196608, -7, 65524, 196608, -6, 65525, 196608, -5, 65525, 196608, -5, 65526, 196608, -4, 65526, 196608, -4, 65527, 196608, -3, 65527, 196608, -2, 65528, 196608, -1, 65528, 196608, -1, 65529, 196608, -1, 65530, 196608, -1, 65531, 196608, -2, 65532, 196608, -2, 65533, 196608, -2, 65534, 196608, -3, 65535, 196608, -4, 0, 196608, -5, 1, 196608, -6, 1, 196608, -7, 1, 196608, -8, 0, 196608, -9, 0, 196608, -10, 65535, 196608, -10, 65534, 196608, -1, 0, 196608, -3, 1, 196608, -2, 1, 196608, -1, 1, 196608, -65536, 1, 196608, -65535, 1, 196608, -65534, 1, 196608, -65534, 2, 196608, -4, 65534, 196608, -5, 65534, 196608, -6, 65534, 196608, -7, 65534, 196608, -8, 65535, 196608, -9, 65535, 196608, -10, 1, 196608, -11, 1, 196608, -11, 2, 196608, -8, 2, 196608, -5, 0, 196608, -1, 65534, 196608, -65536, 65534, 196608, -65536, 65533, 196608, -65535, 65533, 196608, -65535, 65532, 196608, -65535, 65531, 196608, -65535, 65530, 196608, -2, 65529, 196608, -4, 65530, 196608, -5, 65530, 196608, -6, 65531, 196608, -7, 65532, 196608, -8, 65532, 196608, -8, 65533, 196608, -8, 65534, 196608, -4, 65535, 196608, -3, 65534, 196608, -1, 65532, 196608, -5, 65527, 196608, -6, 65528, 196608, -8, 65529, 196608, -9, 65530, 196608, -10, 65531, 196608, -11, 65532, 196608, -11, 65533, 196608, -11, 65534, 196608, -11, 65535, 196608, -11, 0, 196608, -10, 0, 196608, -7, 65533, 196608, -7, 65531, 196608, -6, 65530, 196608, -5, 65528, 196608, -7, 65526, 196608, -8, 65527, 196608, -9, 65528, 196608, -10, 65530, 196608, -12, 65533, 196608, -12, 65535, 196608, -12, 0, 196608, -12, 1, 196608, -7, 65535, 196608, -5, 65532, 196608, -2, 65526, 196608, -2, 65525, 196608, -3, 65524, 196608, -4, 65524, 196608, -7, 65527, 196608, -8, 65528, 196608, -9, 65531, 196608, -10, 65532, 196608, -10, 65533, 196608, -9, 65534, 196608, -6, 65532, 196608, -5, 65531, 196608, -4, 65529, 196608, -4, 65528, 196608, -6, 65529, 196608, -7, 65529, 196608, -8, 65530, 196608, -8, 65531, 196608, -9, 65532, 196608, -9, 65533, 196608, -3, 65526, 196608, -3, 65525, 196608, -4, 65525, 196608, -5, 65529, 196608, -7, 65530, 196608, -6, 65527, 196608, -7, 65528, 196608, -4, 65523, 196608, -4, 65522, 196608, -5, 65522, 196608, -6, 65523, 196608, -9, 65526, 196608, -10, 65528, 196608, -11, 65530, 196608, -12, 65531, 196608, -12, 65532, 196608, -6, 65524, 196608, -8, 65526, 196608, -13, 65533, 196608, -13, 65534, 196608, -12, 65534, 196608, -5, 65523, 196608, -10, 65529, 196608, -5, 65524, 196608, -6, 65522, 196608, -9, 65527, 196608, -10, 65527, 196608, -9, 65529, 196608, -7, 65523, 196608, -1, 65525, 196608, -1, 65524, 196608, -1, 65523, 196608, -1, 65522, 196608, -2, 65521, 196608, -3, 65521, 196608, -3, 65530, 196608, -1, 65527, 196608, -65536, 65526, 196608, -65535, 65525, 196608, -65535, 65524, 196608, -65535, 65523, 196608, -65535, 65522, 196608, -65536, 65522, 196608, -2, 65523, 196608, -2, 65527, 196608, -65536, 65528, 196608, -65535, 65528, 196608, -65533, 65527, 196608, -65532, 65526, 196608, -65531, 65524, 196608, -65530, 65523, 196608, -65529, 65522, 196608, -65528, 65520, 196608, -65528, 65519, 196608, -65528, 65518, 196608, -65529, 65518, 196608, -65531, 65518, 196608, -65533, 65519, 196608, -65534, 65521, 196608, -3, 65529, 196608, -3, 65531, 196608, -2, 65531, 196608, -65535, 65529, 196608, -65534, 65528, 196608, -65531, 65525, 196608, -65529, 65521, 196608, -65529, 65519, 196608, -65530, 65517, 196608, -65531, 65517, 196608, -65532, 65518, 196608, -65533, 65520, 196608, -65536, 65529, 196608, -65534, 65529, 196608, -65532, 65527, 196608, -65529, 65524, 196608, -65528, 65523, 196608, -65528, 65521, 196608, -65527, 65520, 196608, -65527, 65519, 196608, -65530, 65519, 196608, -65531, 65520, 196608, -65531, 65522, 196608, -65532, 65524, 196608, -65533, 65526, 196608, -65534, 65527, 196608, -65534, 65530, 196608, -65533, 65530, 196608, -65532, 65530, 196608, -65531, 65529, 196608, -65531, 65528, 196608, -65530, 65528, 196608, -65530, 65527, 196608, -65530, 65525, 196608, -65530, 65522, 196608, -65534, 65526, 196608, -3, 0, 196608, -65536, 0, 196608, -65534, 65535, 196608, -65533, 65534, 196608, -65532, 65533, 196608, -65531, 65532, 196608, -65531, 65530, 196608, -65530, 65529, 196608, -65532, 65528, 196608, -65533, 65529, 196608, -65534, 65531, 196608, -65533, 1, 196608, -65532, 1, 196608, -65532, 0, 196608, -65533, 0, 196608, -65534, 0, 196608, -65535, 2, 196608, -65536, 3, 196608, -1, 4, 196608, -1, 5, 196608, -1, 6, 196608, -1, 7, 196608, -65536, 7, 196608, -65535, 7, 196608, -65535, 6, 196608, -65534, 5, 196608, -65534, 4, 196608, -65533, 3, 196608, -65533, 2, 196608, -65535, 0, 196608, -2, 2, 196608, -3, 3, 196608, -4, 4, 196608, -5, 5, 196608, -2, 6, 196608, -1, 3, 196608, -3, 2, 196608, -4, 2, 196608, -5, 2, 196608, -5, 3, 196608, -5, 4, 196608, -4, 5, 196608, -3, 5, 196608, -2, 4, 196608, -65536, 2, 196608, -2, 0, 196608, -3, 6, 196608, -2, 5, 196608, -6, 0, 196608, -8, 1, 196608, -10, 2, 196608, -7, 4, 196608, -6, 3, 196608, -6, 2, 196608, -8, 3, 196608, -6, 4, 196608, -7, 2, 196608, -5, 65535, 196608, -6, 65535, 196608, -9, 1, 196608, -9, 2, 196608, -9, 3, 196608, -7, 3, 196608, -3, 65533, 196608, -65535, 65526, 196608, -65536, 65525, 196608)
+}
+metadata/_editor_floor_ = Vector3(0, -1, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="GridMap"]
 transform = Transform3D(15, 0, 0, 0, 1, 0, 0, 0, 15, 0, 0, 0)
+visible = false
 material_override = SubResource("StandardMaterial3D_xiof3")
 mesh = SubResource("PlaneMesh_jhhsm")
 
@@ -152,7 +174,7 @@ stream = ExtResource("5_b1g5j")
 
 [node name="ProtonScatter" type="Node3D" parent="."]
 script = ExtResource("8_5y6nd")
-modifier_stack = SubResource("Resource_jikwh")
+modifier_stack = SubResource("Resource_o73xr")
 Performance/use_chunks = true
 Performance/chunk_dimensions = Vector3(15, 15, 15)
 
