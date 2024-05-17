@@ -24,6 +24,46 @@ script = ExtResource("3_3r0db")
 unique_name_in_owner = true
 script = ExtResource("3_wiyey")
 
+[node name="LabelBananas" type="Label" parent="Control"]
+unique_name_in_owner = true
+layout_mode = 2
+offset_left = 531.0
+offset_top = 31.0
+offset_right = 621.0
+offset_bottom = 99.0
+theme_override_font_sizes/font_size = 49
+text = "test"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 2
+offset_left = 32.0
+offset_top = -56.0
+offset_right = 1120.0
+offset_bottom = 186.0
+
+[node name="Panel" type="Panel" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.4
+
+[node name="TabContainer" type="TabContainer" parent="Control/VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 8
+
+[node name="ClickerSection" type="HBoxContainer" parent="Control/VBoxContainer/Panel/TabContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="BuffSection" type="HBoxContainer" parent="Control/VBoxContainer/Panel/TabContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
 [node name="MarginContainer" type="MarginContainer" parent="Control"]
 layout_mode = 1
 anchors_preset = 15
@@ -42,36 +82,4 @@ visible = false
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/CenterContainer"]
-layout_mode = 2
-
-[node name="LabelBananas" type="Label" parent="Control/MarginContainer/CenterContainer/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_font_sizes/font_size = 49
-text = "test"
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer"]
-layout_mode = 2
-
-[node name="Panel" type="Panel" parent="Control/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.4
-
-[node name="TabContainer" type="TabContainer" parent="Control/MarginContainer/VBoxContainer/Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_vertical = 8
-
-[node name="ClickerSection" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer/Panel/TabContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-
-[node name="BuffSection" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer/Panel/TabContainer"]
-unique_name_in_owner = true
-visible = false
 layout_mode = 2

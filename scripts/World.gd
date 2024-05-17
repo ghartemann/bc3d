@@ -5,6 +5,7 @@ var plane: Plane
 var map: DataMap
 
 var building: String = "res://scenes/components/building.tscn"
+const ScatterUtil := preload("res://addons/proton_scatter/src/common/scatter_util.gd")
 
 @onready var camera = %Camera3D
 
@@ -19,6 +20,7 @@ func _ready():
 
 func _process(delta):
 	move_selector(delta)
+	rotate_banana(delta)
 
 
 func _unhandled_input(event: InputEvent):
@@ -69,6 +71,8 @@ func create_building(pos: Vector3, type: String):
 	var node = $ProtonScatter/Exclusion.duplicate()
 	node.position = Vector3(selector.position.x, 0, selector.position.z)
 	$ProtonScatter.add_child(node)
+	#update_gizmos()
+	ScatterUtil.request_parent_to_rebuild(node)
 
 
 func rotate_banana(delta):
