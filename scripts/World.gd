@@ -4,6 +4,8 @@ extends Node3D
 var plane: Plane
 var map: DataMap
 
+var build_mode: bool = false
+
 var building: String = "res://scenes/components/building.tscn"
 const ScatterUtil := preload("res://addons/proton_scatter/src/common/scatter_util.gd")
 
@@ -24,11 +26,16 @@ func _process(delta):
 
 
 func _unhandled_input(event: InputEvent):
-	if (event is InputEventMouseButton && event.pressed == true && event.button_index == MOUSE_BUTTON_LEFT):
-		#%UI.increment_via_bpc()
-		#%LabelBananas.text = str(%UI.bananas)
-	
-		create_building(selector.position, building)
+	if (event is InputEventMouseButton && event.pressed == true):
+		if (event.button_index == MOUSE_BUTTON_LEFT):
+			#%UI.increment_via_bpc()
+			#%LabelBananas.text = str(%UI.bananas)
+		
+			if (build_mode == true):
+				create_building(selector.position, building)
+		
+		if (event.button_index == MOUSE_BUTTON_RIGHT):
+			toggle_build_mode(false)
 
 
 func get_mouse_pos() -> Vector2:
@@ -78,3 +85,13 @@ func create_building(pos: Vector3, type: String):
 func rotate_banana(delta):
 	var r = %Banana3D.rotation
 	%Banana3D.rotation = Vector3(r.x, r.y + (1 * delta), r.z)
+
+
+# je peux pas mettre plusieurs types parce que c'est pas supporté saloperie
+func toggle_build_mode(enabled: bool, clicker = null):
+	if (enabled == true):
+		build_mode = true
+		selector.show()
+	else:
+		build_mode = false
+		selector.hide()

@@ -12,15 +12,21 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource("1_qwt4f")
 
 [node name="Control" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Tooltip" type="Panel" parent="Control"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -54,10 +60,12 @@ unique_name_in_owner = true
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="AspectRatioContainer/Button"]
-layout_mode = 2
-offset_top = -54.0
-offset_right = 78.0
-offset_bottom = 132.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="AspectRatioContainer/Button/MarginContainer"]
 layout_mode = 2
@@ -73,17 +81,23 @@ stretch_mode = 4
 [node name="LabelText" type="Label" parent="AspectRatioContainer/Button/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+text = "{labelText}"
 
 [node name="LabelValue" type="Label" parent="AspectRatioContainer/Button/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+text = "{labelValue}"
 script = ExtResource("2_hc5py")
 
 [node name="LabelPrice" type="Label" parent="AspectRatioContainer/Button/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+text = "{labelPrice}"
 script = ExtResource("3_ma1m6")
 
 [node name="LabelOwned" type="Label" parent="AspectRatioContainer/Button/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+text = "{labelOwned}"
+
+[connection signal="pressed" from="AspectRatioContainer/Button" to="." method="_on_button_pressed"]

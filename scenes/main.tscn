@@ -9,22 +9,41 @@
 script = ExtResource("1_7r4pn")
 
 [node name="World" parent="." instance=ExtResource("1_5pmyt")]
+unique_name_in_owner = true
 
-[node name="Control" type="Control" parent="."]
+[node name="Control2" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 430.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control2" type="Control" parent="Control2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 1
+
+[node name="Control" type="Control" parent="Control2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.2
 script = ExtResource("3_3r0db")
 
-[node name="UI" type="CanvasLayer" parent="Control"]
+[node name="UI" type="CanvasLayer" parent="Control2/VBoxContainer/Control"]
 unique_name_in_owner = true
 script = ExtResource("3_wiyey")
 
-[node name="LabelBananas" type="Label" parent="Control"]
+[node name="LabelBananas" type="Label" parent="Control2/VBoxContainer/Control"]
 unique_name_in_owner = true
 layout_mode = 2
 offset_left = 531.0
@@ -34,19 +53,17 @@ offset_bottom = 99.0
 theme_override_font_sizes/font_size = 49
 text = "test"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
-layout_mode = 2
-offset_left = 32.0
-offset_top = -56.0
-offset_right = 1120.0
-offset_bottom = 186.0
-
-[node name="Panel" type="Panel" parent="Control/VBoxContainer"]
-layout_mode = 2
+[node name="Panel" type="Panel" parent="Control2/VBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 0.4
+size_flags_stretch_ratio = 0.2
 
-[node name="TabContainer" type="TabContainer" parent="Control/VBoxContainer/Panel"]
+[node name="TabContainer" type="TabContainer" parent="Control2/VBoxContainer/Control/Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -55,31 +72,11 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 8
 
-[node name="ClickerSection" type="HBoxContainer" parent="Control/VBoxContainer/Panel/TabContainer"]
+[node name="ClickerSection" type="HBoxContainer" parent="Control2/VBoxContainer/Control/Panel/TabContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="BuffSection" type="HBoxContainer" parent="Control/VBoxContainer/Panel/TabContainer"]
+[node name="BuffSection" type="HBoxContainer" parent="Control2/VBoxContainer/Control/Panel/TabContainer"]
 unique_name_in_owner = true
 visible = false
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="Control"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -88.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 32
-theme_override_constants/margin_top = 32
-theme_override_constants/margin_right = 32
-theme_override_constants/margin_bottom = 32
-
-[node name="CenterContainer" type="CenterContainer" parent="Control/MarginContainer"]
-visible = false
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/CenterContainer"]
 layout_mode = 2

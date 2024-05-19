@@ -1,6 +1,6 @@
 extends Control
 
-signal buy(type, value, price)
+signal build(type, value, price)
 
 var cursor_func: Script = preload("res://scripts/utils/cursor.gd")
 var format: Script = preload("res://scripts/utils/format.gd")
@@ -70,7 +70,7 @@ func _ready():
 	
 	set_button_text()
 	%Tooltip.hide()
-	buy.connect(Callable(get_node("/root/Main"), "_on_buy"))
+	build.connect(Callable(get_node("/root/Main"), "_on_build"))
 
 func _process(_delta):
 	if %Button.disabled == true:
@@ -88,9 +88,6 @@ func _process(_delta):
 	if %Tooltip.visible == true:
 		var mouse_pos = get_viewport().get_mouse_position()
 		
-		#var x = mouse_pos.x - global_position.x + 100
-		#var y = mouse_pos.y - global_position.y
-		
 		var x = mouse_pos.x + 100
 		var y = mouse_pos.y
 		%Tooltip.position = Vector2(x, y)
@@ -98,16 +95,15 @@ func _process(_delta):
 	set_button_text()
 	
 func _on_button_pressed():
-	buy_clicker()
+	build.emit({type: type, value: value, price: price})
+	#buy_clicker()
 
 func set_button_text():
 	pass
 
-func buy_clicker():
-	buy.emit(type, value, price)
-	
-	price *= price_multiplier
-	nb_owned += 1
+#func buy_clicker():
+#	price *= price_multiplier
+#	nb_owned += 1
 
 func _on_mouse_entered():
 	hovered = true

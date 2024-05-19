@@ -35,3 +35,7 @@ func instantiate_buttons():
 			%ClickerSection.add_child(button)
 		elif clicker.type == 'bpc':
 			%BuffSection.add_child(button)
+
+func _on_build(clicker):
+	%World.toggle_build_mode(true, clicker)
+
