@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://b8qod0cq5cdvk"]
+[gd_scene load_steps=4 format=3 uid="uid://b8qod0cq5cdvk"]
 
 [ext_resource type="PackedScene" uid="uid://ntwsvgp35vyg" path="res://scenes/world.tscn" id="1_5pmyt"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_7r4pn"]
 [ext_resource type="Script" path="res://scenes/Control.gd" id="3_3r0db"]
-[ext_resource type="Script" path="res://scripts/clicker.gd" id="3_wiyey"]
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_7r4pn")
@@ -41,7 +40,6 @@ script = ExtResource("3_3r0db")
 
 [node name="UI" type="CanvasLayer" parent="Control2/VBoxContainer/Control"]
 unique_name_in_owner = true
-script = ExtResource("3_wiyey")
 
 [node name="LabelBananas" type="Label" parent="Control2/VBoxContainer/Control"]
 unique_name_in_owner = true

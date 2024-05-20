@@ -95,7 +95,7 @@ func _process(_delta):
 	set_button_text()
 	
 func _on_button_pressed():
-	build.emit({type: type, value: value, price: price})
+	build.emit({'type': type, 'value': value, 'price': price})
 	#buy_clicker()
 
 func set_button_text():

@@ -1,10 +1,13 @@
 extends Node3D
 
 
+signal buy(clicker)
+
 var plane: Plane
 var map: DataMap
 
 var build_mode: bool = false
+var selected_clicker = null
 
 var building: String = "res://scenes/components/building.tscn"
 const ScatterUtil := preload("res://addons/proton_scatter/src/common/scatter_util.gd")
@@ -15,6 +18,8 @@ const ScatterUtil := preload("res://addons/proton_scatter/src/common/scatter_uti
 
 
 func _ready():
+	buy.connect(Callable(get_node("/root/Main"), "_on_buy"))
+	
 	map = DataMap.new()
 	plane = Plane(Vector3.UP, Vector3.ZERO)
 	$AudioStreamPlayer.play()
@@ -55,6 +60,7 @@ func move_selector(delta):
 	var world_position = get_world_pos()
 	
 	if !world_position:
+		print('No world position')
 		return
 	
 	var x_adjusted = round(world_position.x / 100)
@@ -74,6 +80,9 @@ func create_building(pos: Vector3, type: String):
 
 	get_node("/root/Main/World/GridMap").add_child(build)
 	
+	if (selected_clicker != null):
+		buy.emit(selected_clicker)
+	
 	#marche po ça
 	var node = $ProtonScatter/Exclusion.duplicate()
 	node.position = Vector3(selector.position.x, 0, selector.position.z)
@@ -92,6 +101,8 @@ func toggle_build_mode(enabled: bool, clicker = null):
 	if (enabled == true):
 		build_mode = true
 		selector.show()
+		selected_clicker = clicker
 	else:
 		build_mode = false
 		selector.hide()
+		selected_clicker = null
