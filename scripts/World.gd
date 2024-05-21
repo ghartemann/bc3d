@@ -17,6 +17,8 @@ const ScatterUtil := preload("res://addons/proton_scatter/src/common/scatter_uti
 @export var selector: Node3D # The 'cursor'
 
 
+
+########## BASE FUNCTIONS
 func _ready():
 	buy.connect(Callable(get_node("/root/Main"), "_on_buy"))
 	
@@ -45,6 +47,8 @@ func _unhandled_input(event: InputEvent):
 			toggle_build_mode(false)
 
 
+
+########## FUNCTIONS
 func get_mouse_pos() -> Vector2:
 	return get_viewport().get_mouse_position()
 
@@ -100,11 +104,6 @@ func rotate_banana(delta):
 
 # je peux pas mettre plusieurs types parce que c'est pas supporté saloperie
 func toggle_build_mode(enabled: bool, clicker = null):
-	if (enabled == true):
-		build_mode = true
-		selector.show()
-		selected_clicker = clicker
-	else:
-		build_mode = false
-		selector.hide()
-		selected_clicker = null
+	build_mode = enabled
+	selector.visible = enabled
+	selected_clicker = clicker if enabled else null

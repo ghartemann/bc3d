@@ -49,6 +49,8 @@ var clicker_name: String:
 	get:
 		return clicker_name
 
+var clicker_slug: String
+
 var picture_path: String:
 	set(new_val):
 		picture_path = new_val
@@ -95,7 +97,13 @@ func _process(_delta):
 	set_button_text()
 	
 func _on_button_pressed():
-	build.emit({'type': type, 'value': value, 'price': price})
+	build.emit({
+		'name': clicker_name,
+		'slug': clicker_slug,
+		'type': type,
+		'value': value,
+		'price': price
+		})
 	#buy_clicker()
 
 func set_button_text():

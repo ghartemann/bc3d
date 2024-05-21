@@ -1,5 +1,6 @@
 [
 	{
+		"slug": "clicker",
 		"name": {
 			"fr": "Cliqueur",
 			"en": "Clicker"
@@ -15,6 +16,7 @@
 		"picture_path": "clickers/clicker.png"
 	},
 	{
+		"slug": "banana_tree",
 		"name": {
 			"fr": "Bananier",
 			"en": "Banana tree"
@@ -30,6 +32,7 @@
 		"picture_path": "clickers/leaf.png"
 	},
 	{
+		"slug": "macaque",
 		"name": {
 			"fr": "Macaque",
 			"en": "Macaque"
@@ -45,6 +48,7 @@
 		"picture_path": "clickers/macaque.png"
 	},
 	{
+		"slug": "gorilla",
 		"name": {
 			"fr": "Gorille",
 			"en": "Gorilla"
@@ -60,6 +64,7 @@
 		"picture_path": "clickers/gorilla.png"
 	},
 	{
+		"slug": "ad",
 		"name": {
 			"fr": "Publicité",
 			"en": "Ad"
@@ -75,6 +80,7 @@
 		"picture_path": "clickers/adverts.png"
 	},
 	{
+		"slug": "toucan",
 		"name": {
 			"fr": "Toucan muet",
 			"en": "Mute toucan"
@@ -90,6 +96,7 @@
 		"picture_path": "clickers/toucan.png"
 	},
 	{
+		"slug": "sloth",
 		"name": {
 			"fr": "Paresseux",
 			"en": "Sloth"
@@ -105,6 +112,7 @@
 		"picture_path": "clickers/sloth.png"
 	},
 	{
+		"slug": "plantation",
 		"name": {
 			"fr": "Bananeraie",
 			"en": "Banana plantation"
@@ -120,6 +128,7 @@
 		"picture_path": "clickers/plantation.png"
 	},
 	{
+		"slug": "gun",
 		"name": {
 			"fr": "Fusil à bananes",
 			"en": "Banana gun"
@@ -135,6 +144,7 @@
 		"picture_path": "clickers/rifle.png"
 	},
 	{
+		"slug": "ship",
 		"name": {
 			"fr": "Bateau cargo",
 			"en": "Cargo ship"
@@ -150,6 +160,7 @@
 		"picture_path": "clickers/boat.png"
 	},
 	{
+		"slug": "boeing",
 		"name": {
 			"fr": "Boeing 737 Max",
 			"en": "Boeing 737 Max"
@@ -165,6 +176,7 @@
 		"picture_path": "clickers/airplane.png"
 	},
 	{
+		"slug": "wormhole",
 		"name": {
 			"fr": "Trou de ver",
 			"en": "Wormhole"
@@ -187,6 +199,7 @@
 
 
 	{
+		"slug": "better_cursor",
 		"name": {
 			"fr": "Meilleur curseur",
 			"en": "Better cursor"
@@ -202,6 +215,7 @@
 		"picture_path": "buffs/hand.png"
 	},
 	{
+		"slug": "concrete_cursor",
 		"name": {
 			"fr": "Curseur en béton armé",
 			"en": "Reinforced concrete cursor"
@@ -216,7 +230,8 @@
 		"type": "bpc",
 		"picture_path": "buffs/solidcursor.png"
 	},
-		{
+	{
+		"slug": "golden_cursor",
 		"name": {
 			"fr": "Cheat de ouf",
 			"en": "Cheat de ouf"
