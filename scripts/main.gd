@@ -11,7 +11,8 @@ func _ready():
 	instantiate_buttons()
 
 func _process(delta):
-	pass
+	increment_via_bps(delta)
+	disable_expensive_clickers()
 	
 
 func instantiate_buttons():
@@ -44,7 +45,7 @@ func _on_build(clicker):
 var bananas: float = 0:
 	set(new_val):
 		bananas = new_val
-		#%LabelBananas.value = bananas
+		%LabelBananas.value = bananas
 	get:
 		return bananas
 
@@ -100,7 +101,7 @@ func _on_button_main_pressed() -> void:
 
 func disable_expensive_clickers() -> void:
 	for b in %ClickerSection.get_children() + %BuffSection.get_children():
-		b.get_node("Button").disabled = bananas < b.price
+		b.get_node("AspectRatioContainer").get_node("Button").disabled = bananas < b.price
 
 func _on_buy(clicker: Dictionary) -> void:
 	increment_bp(clicker.value, clicker.type)

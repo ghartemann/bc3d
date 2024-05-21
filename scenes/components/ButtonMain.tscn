@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://0fwmrpa7ve0e"]
+
+[ext_resource type="Texture2D" uid="uid://dtrk0t3wa4yt2" path="res://assets/images/buttons/main/base.png" id="1_etil6"]
+[ext_resource type="Texture2D" uid="uid://b7kmynaak2ufd" path="res://assets/images/buttons/main/pressed.png" id="2_uanoe"]
+[ext_resource type="Texture2D" uid="uid://6axpasf5eep1" path="res://assets/images/buttons/main/hover.png" id="3_bdkk7"]
+[ext_resource type="Script" path="res://scenes/components/TextureButton.gd" id="4_j5fmt"]
+
+[node name="ButtonMain" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="AspectRatioContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="TextureButton" type="TextureButton" parent="AspectRatioContainer/MarginContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_etil6")
+texture_pressed = ExtResource("2_uanoe")
+texture_hover = ExtResource("3_bdkk7")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("4_j5fmt")

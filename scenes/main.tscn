@@ -1,8 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://b8qod0cq5cdvk"]
+[gd_scene load_steps=7 format=3 uid="uid://b8qod0cq5cdvk"]
 
 [ext_resource type="PackedScene" uid="uid://ntwsvgp35vyg" path="res://scenes/world.tscn" id="1_5pmyt"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_7r4pn"]
 [ext_resource type="Script" path="res://scenes/Control.gd" id="3_3r0db"]
+[ext_resource type="Script" path="res://scenes/components/LabelBananas.gd" id="4_hqtgt"]
+[ext_resource type="PackedScene" uid="uid://0fwmrpa7ve0e" path="res://scenes/components/ButtonMain.tscn" id="5_uhhq6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_iw8b0"]
+font_size = 55
+shadow_size = 4
+shadow_color = Color(0, 0, 0, 0.705882)
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_7r4pn")
@@ -32,26 +39,57 @@ layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 1
 
+[node name="MarginContainer" type="MarginContainer" parent="Control2/VBoxContainer/Control2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="LabelBananas" type="Label" parent="Control2/VBoxContainer/Control2/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 49
+text = "test"
+label_settings = SubResource("LabelSettings_iw8b0")
+script = ExtResource("4_hqtgt")
+
 [node name="Control" type="Control" parent="Control2/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.2
+mouse_filter = 1
 script = ExtResource("3_3r0db")
 
 [node name="UI" type="CanvasLayer" parent="Control2/VBoxContainer/Control"]
 unique_name_in_owner = true
 
-[node name="LabelBananas" type="Label" parent="Control2/VBoxContainer/Control"]
-unique_name_in_owner = true
-layout_mode = 2
-offset_left = 531.0
-offset_top = 31.0
-offset_right = 621.0
-offset_bottom = 99.0
-theme_override_font_sizes/font_size = 49
-text = "test"
+[node name="Panel2" type="Control" parent="Control2/VBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -41.0
+offset_right = -1.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
 
-[node name="Panel" type="Panel" parent="Control2/VBoxContainer/Control"]
+[node name="ButtonMain" parent="Control2/VBoxContainer/Control/Panel2" instance=ExtResource("5_uhhq6")]
+layout_mode = 2
+anchors_preset = 0
+size_flags_horizontal = 3
+
+[node name="Panel" type="Control" parent="Control2/VBoxContainer/Control"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -60,21 +98,31 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.2
+mouse_filter = 2
 
-[node name="TabContainer" type="TabContainer" parent="Control2/VBoxContainer/Control/Panel"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control2/VBoxContainer/Control/Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_vertical = 8
+mouse_filter = 2
+theme_override_constants/separation = 128
 
-[node name="ClickerSection" type="HBoxContainer" parent="Control2/VBoxContainer/Control/Panel/TabContainer"]
+[node name="ClickerSection" type="GridContainer" parent="Control2/VBoxContainer/Control/Panel/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
+columns = 8
 
-[node name="BuffSection" type="HBoxContainer" parent="Control2/VBoxContainer/Control/Panel/TabContainer"]
-unique_name_in_owner = true
-visible = false
+[node name="Control" type="Control" parent="Control2/VBoxContainer/Control/Panel/HBoxContainer"]
+custom_minimum_size = Vector2(200, 2.08165e-12)
 layout_mode = 2
+mouse_filter = 2
+
+[node name="BuffSection" type="GridContainer" parent="Control2/VBoxContainer/Control/Panel/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 8

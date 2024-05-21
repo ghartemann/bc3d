@@ -6,8 +6,8 @@ signal buy(clicker)
 var plane: Plane
 var map: DataMap
 
-var build_mode: bool = false
-var selected_clicker = null
+var build_mode: bool
+var selected_clicker # je peux pas typer cette merde
 
 var building: String = "res://scenes/components/building.tscn"
 const ScatterUtil := preload("res://addons/proton_scatter/src/common/scatter_util.gd")
@@ -23,6 +23,8 @@ func _ready():
 	map = DataMap.new()
 	plane = Plane(Vector3.UP, Vector3.ZERO)
 	$AudioStreamPlayer.play()
+	
+	toggle_build_mode(false)
 
 
 func _process(delta):

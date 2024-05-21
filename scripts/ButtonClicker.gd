@@ -101,9 +101,9 @@ func _on_button_pressed():
 func set_button_text():
 	pass
 
-#func buy_clicker():
-#	price *= price_multiplier
-#	nb_owned += 1
+func buy_clicker():
+	price *= price_multiplier
+	nb_owned += 1
 
 func _on_mouse_entered():
 	hovered = true
