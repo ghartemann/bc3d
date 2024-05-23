@@ -69,11 +69,11 @@ func move_selector(delta):
 		print('No world position')
 		return
 	
-	var x_adjusted = round(world_position.x / 100)
-	var z_adjusted = round(world_position.z / 100)
+	var x_adjusted = round(world_position.x + .5)
+	var z_adjusted = round(world_position.z + .5)
 	
-	var gridmap_position = Vector3(x_adjusted, 0.001, z_adjusted)
-	selector.position = lerp(selector.position, gridmap_position, delta * 40)
+	var gridmap_position = Vector3(x_adjusted, 1, z_adjusted)
+	selector.position = gridmap_position
 
 
 func create_building(pos: Vector3, type: String):
@@ -98,8 +98,7 @@ func create_building(pos: Vector3, type: String):
 
 
 func rotate_banana(delta):
-	var r = %Banana3D.rotation
-	%Banana3D.rotation = Vector3(r.x, r.y + (1 * delta), r.z)
+	%Banana3D.transform.basis = %Banana3D.transform.basis.rotated(Vector3.UP, 0.03)
 
 
 # je peux pas mettre plusieurs types parce que c'est pas supporté saloperie
