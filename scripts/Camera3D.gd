@@ -34,7 +34,6 @@ func _physics_process(delta):
 		position.z -= move
 
 	if Input.is_action_pressed("ZoomIn") and size > 10:
-		print(size)
 		size -= speed / 10
 	
 	if Input.is_action_pressed("ZoomOut") and size < 100:
