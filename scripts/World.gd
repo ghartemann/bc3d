@@ -8,6 +8,7 @@ var map: DataMap
 
 var build_mode: bool
 var selected_clicker # je peux pas typer cette merde
+var built_clickers_pos: Array
 
 var building: String = "res://scenes/components/building.tscn"
 const ScatterUtil := preload("res://addons/proton_scatter/src/common/scatter_util.gd")
@@ -82,12 +83,34 @@ func create_building(pos: Vector3, type: String):
 	
 	var sel = selector.position
 	
-	build.position = Vector3(round(sel.x), 0.25, round(sel.z))
+	build.position = Vector3(round(sel.x), 0, round(sel.z))
 
 	get_node("/root/Main/World/GridMap").add_child(build)
 	
 	if (selected_clicker != null):
+		if (is_pos_occupied(build.position)):
+			print("Position already occupied")
+			return
+			
 		buy.emit(selected_clicker)
+		
+		var bp = build.position
+		var nine_pos = [
+			Vector3(bp.x - 1, 0, bp.z - 1),
+			Vector3(bp.x - 1, 0, bp.z),
+			Vector3(bp.x - 1, 0, bp.z + 1),
+			Vector3(bp.x, 0, bp.z - 1),
+			build.position,
+			Vector3(bp.x, 0, bp.z + 1),
+			Vector3(bp.x + 1, 0, bp.z - 1),
+			Vector3(bp.x + 1, 0, bp.z),
+			Vector3(bp.x + 1, 0, bp.z + 1),
+		];
+		
+		built_clickers_pos.push_back({
+			'clicker': selected_clicker.slug,
+			'pos': nine_pos
+		})
 	
 	#marche po ça
 	var node = $ProtonScatter/Exclusion.duplicate()
@@ -106,3 +129,12 @@ func toggle_build_mode(enabled: bool, clicker = null):
 	build_mode = enabled
 	selector.visible = enabled
 	selected_clicker = clicker if enabled else null
+
+func is_pos_occupied(sel_pos):	
+	for built in built_clickers_pos:
+		for pos in built['pos']:
+			print(pos, sel_pos)
+			if (pos == sel_pos):
+				return true
+	
+	return false
