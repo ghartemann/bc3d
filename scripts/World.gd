@@ -8,7 +8,10 @@ var map: DataMap
 
 var build_mode: bool
 var selected_clicker # je peux pas typer cette merde
-var built_clickers_pos: Array
+var built_clickers_pos: Array = [{
+	'clicker': 'none_pyramid',
+	'pos': [Vector3(-1, 0, -1), Vector3(1, 0, 1)]
+}]
 
 var building: String = "res://scenes/components/building.tscn"
 const ScatterUtil := preload("res://addons/proton_scatter/src/common/scatter_util.gd")
@@ -34,6 +37,9 @@ func _ready():
 func _process(delta):
 	move_selector(delta)
 	rotate_banana(delta)
+	
+	if selected_clicker == null or selected_clicker.price > $"..".bananas:
+		toggle_build_mode(false)
 
 
 func _unhandled_input(event: InputEvent):

@@ -125,6 +125,7 @@ func disable_expensive_clickers() -> void:
 	for i in range(button_array.size()):
 		button_array[i].disabled = bananas < array[i].price
 
+
 func addClickerToOwnedArray(clicker: Dictionary) -> void:
 	if (clickers_owned.has(clicker.slug) == false):
 		clickers_owned[clicker.slug] = 0

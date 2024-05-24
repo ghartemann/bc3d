@@ -1,12 +1,13 @@
-[gd_scene load_steps=29 format=3 uid="uid://ntwsvgp35vyg"]
+[gd_scene load_steps=30 format=3 uid="uid://ntwsvgp35vyg"]
 
 [ext_resource type="Script" path="res://scripts/World.gd" id="1_b8da8"]
 [ext_resource type="Script" path="res://scripts/Camera3D.gd" id="2_fu6h3"]
 [ext_resource type="MeshLibrary" uid="uid://civv3dmfgvwgd" path="res://assets/meshes/meshlibrary.tres" id="3_j00xn"]
+[ext_resource type="PackedScene" uid="uid://d36howh35j5t2" path="res://scenes/components/multimesh_test.tscn" id="3_nn1nq"]
 [ext_resource type="Texture2D" uid="uid://bumhpsohecf4l" path="res://assets/selector.svg" id="4_5lv2s"]
+[ext_resource type="PackedScene" uid="uid://d06uci6qayv44" path="res://assets/packs/pyramid.glb" id="4_ccv5o"]
 [ext_resource type="AudioStream" uid="uid://cu2ycpfvbjoqr" path="res://assets/sounds/ambience/nature-soundstropicaljunglebirds-108380.mp3" id="5_b1g5j"]
 [ext_resource type="PackedScene" uid="uid://bxkcjqyujl21p" path="res://scenes/components/banana_2.tscn" id="5_mof7e"]
-[ext_resource type="PackedScene" uid="uid://bqcp70jj483f2" path="res://assets/packs/lowpolypractice-pyramid.blend" id="6_xb5pb"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/scatter.gd" id="8_5y6nd"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/stack/modifier_stack.gd" id="9_08a6j"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/create_inside_random.gd" id="10_1tlte"]
@@ -32,7 +33,7 @@ ssao_enabled = true
 glow_enabled = true
 adjustment_brightness = 1.79
 
-[sub_resource type="Resource" id="Resource_lgkb2"]
+[sub_resource type="Resource" id="Resource_vir15"]
 script = ExtResource("10_1tlte")
 amount = 30000
 enabled = true
@@ -41,7 +42,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 1
 
-[sub_resource type="Resource" id="Resource_5i20c"]
+[sub_resource type="Resource" id="Resource_r1fer"]
 script = ExtResource("12_dii7j")
 iterations = 3
 offset_step = 0.2
@@ -53,7 +54,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_sm8dn"]
+[sub_resource type="Resource" id="Resource_uqtnh"]
 script = ExtResource("13_u6dke")
 ray_direction = Vector3(0, -1, 0)
 ray_length = 5.0
@@ -69,7 +70,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_4g1d6"]
+[sub_resource type="Resource" id="Resource_s3h1h"]
 script = ExtResource("13_qlagu")
 rotation = Vector3(2.08167e-15, 360, 2.08167e-15)
 snap_angle = Vector3(0, 0, 0)
@@ -79,7 +80,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_33uqb"]
+[sub_resource type="Resource" id="Resource_nva6i"]
 script = ExtResource("14_w7m3u")
 negative_shapes_only = false
 enabled = true
@@ -88,9 +89,9 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_jl32q"]
+[sub_resource type="Resource" id="Resource_ca0ps"]
 script = ExtResource("9_08a6j")
-stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_lgkb2"), SubResource("Resource_5i20c"), SubResource("Resource_sm8dn"), SubResource("Resource_4g1d6"), SubResource("Resource_33uqb")])
+stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_vir15"), SubResource("Resource_r1fer"), SubResource("Resource_uqtnh"), SubResource("Resource_s3h1h"), SubResource("Resource_nva6i")])
 
 [sub_resource type="Resource" id="Resource_eijgb"]
 script = ExtResource("16_1tik2")
@@ -123,6 +124,9 @@ near = 20.0
 far = 125.0
 script = ExtResource("2_fu6h3")
 
+[node name="Node3D" parent="." instance=ExtResource("3_nn1nq")]
+transform = Transform3D(1, -8.74228e-08, -8.74228e-08, -8.74228e-08, -1, -3.48787e-16, -8.74228e-08, 7.99153e-15, -1, 2.08165e-12, 1, 2.08165e-12)
+
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = ExtResource("3_j00xn")
 cell_size = Vector3(1, 1, 1)
@@ -131,7 +135,7 @@ data = {
 }
 metadata/_editor_floor_ = Vector3(0, -1, 0)
 
-[node name="Pyramid" parent="GridMap" instance=ExtResource("6_xb5pb")]
+[node name="Pyramid" parent="GridMap" instance=ExtResource("4_ccv5o")]
 transform = Transform3D(0.055, 0, 0, 0, 0.055, 0, 0, 0, 0.055, 0, 0, 0)
 
 [node name="Banana3D" type="MeshInstance3D" parent="GridMap"]
@@ -151,8 +155,9 @@ texture = ExtResource("4_5lv2s")
 stream = ExtResource("5_b1g5j")
 
 [node name="ProtonScatter" type="Node3D" parent="."]
+visible = false
 script = ExtResource("8_5y6nd")
-modifier_stack = SubResource("Resource_jl32q")
+modifier_stack = SubResource("Resource_ca0ps")
 Performance/use_chunks = true
 Performance/chunk_dimensions = Vector3(15, 15, 15)
 

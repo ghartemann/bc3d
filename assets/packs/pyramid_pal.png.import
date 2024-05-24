@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cxmqdkcea1fnb"
-path.s3tc="res://.godot/imported/lowpolypractice-pyramid_pal.png-bc82db9fc9169ccb175260fc5057c72c.s3tc.ctex"
+uid="uid://d102r0sa1426b"
+path.s3tc="res://.godot/imported/pyramid_pal.png-5d6d314b59d88f1218b0d5ffeceac5db.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "0af943ad045fd93c097d17e85a09d901"
+}
 
 [deps]
 
-source_file="res://assets/packs/lowpolypractice-pyramid_pal.png"
-dest_files=["res://.godot/imported/lowpolypractice-pyramid_pal.png-bc82db9fc9169ccb175260fc5057c72c.s3tc.ctex"]
+source_file="res://assets/packs/pyramid_pal.png"
+dest_files=["res://.godot/imported/pyramid_pal.png-5d6d314b59d88f1218b0d5ffeceac5db.s3tc.ctex"]
 
 [params]
 
