@@ -51,6 +51,8 @@ var clicker_name: String:
 
 var clicker_slug: String
 
+var size_map: int
+
 var picture_path: String:
 	set(new_val):
 		picture_path = new_val
@@ -102,7 +104,8 @@ func _on_button_pressed():
 		'slug': clicker_slug,
 		'type': type,
 		'value': value,
-		'price': price
+		'price': price,
+		'size_map': size_map
 		})
 	#buy_clicker()
 

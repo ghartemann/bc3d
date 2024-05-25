@@ -6,11 +6,11 @@ signal buy(clicker)
 var plane: Plane
 var map: DataMap
 
-var build_mode: bool
+var build_mode: bool = false
 var selected_clicker # je peux pas typer cette merde
 var built_clickers_pos: Array = [{
 	'clicker': 'none_pyramid',
-	'pos': [Vector3(-1, 0, -1), Vector3(1, 0, 1)]
+	'pos': [Vector3(-3, 0, -3), Vector3(3, 0, 3)]
 }]
 
 var building: String = "res://scenes/components/building.tscn"
@@ -93,9 +93,10 @@ func create_building(pos: Vector3, type: String):
 	else:
 		print("Building ", selected_clicker.slug, " at ", requested_pos)
 		
+		var n = selected_clicker.size_map
 		var occupied_spaces = [
-			Vector3(requested_pos.x - 1, 0, requested_pos.z - 1),
-			Vector3(requested_pos.x + 1, 0, requested_pos.z + 1)
+			Vector3(requested_pos.x - (1 if n == 3 else 0), 0, requested_pos.z - (1 if n == 3 else 0)),
+			Vector3(requested_pos.x + (1 if n == 3 else 0), 0, requested_pos.z + (1 if n == 3 else 0))
 		]
 		
 		built_clickers_pos.push_back({
@@ -105,7 +106,10 @@ func create_building(pos: Vector3, type: String):
 
 		var building_res = load(type)
 		var build = building_res.instantiate()
+		
 		build.position = requested_pos
+		build.model = selected_clicker.slug
+		
 		get_node("/root/Main/World/GridMap").add_child(build)
 		
 		buy.emit(selected_clicker)
@@ -126,7 +130,12 @@ func rotate_banana(delta):
 func toggle_build_mode(enabled: bool, clicker = null):
 	build_mode = enabled
 	selector.visible = enabled
-	selected_clicker = clicker if enabled else null
+	
+	if enabled == true:
+		selected_clicker = clicker
+		selector.scale = Vector3((clicker.size_map * 3), (clicker.size_map * 3), (clicker.size_map * 3))
+	else:
+		selected_clicker = null
 
 func is_building_pos_occupied(req_pos: Vector3) -> bool:
 	for clicker in built_clickers_pos:

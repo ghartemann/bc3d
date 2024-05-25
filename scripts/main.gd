@@ -84,6 +84,7 @@ func instantiate_buttons():
 		button.value = clicker.value
 		button.type = clicker.type
 		button.price = clicker.price
+		button.size_map = clicker.size
 		button.price_multiplier = clicker.price_multiplier
 		button.picture_path = clicker.picture_path
 		button.description = clicker.description[language]
@@ -120,7 +121,9 @@ func increment_bp(amount: float, type: String) -> void:
 
 func disable_expensive_clickers() -> void:
 	var array = %ClickerSection.get_children() + %BuffSection.get_children()
-	var button_array = array.map(func(b): return b.get_node("AspectRatioContainer").get_node("Button"))
+	var button_array = array.map(func(b):
+		return b.get_node("AspectRatioContainer").get_node("Button")
+		)
 	
 	for i in range(button_array.size()):
 		button_array[i].disabled = bananas < array[i].price

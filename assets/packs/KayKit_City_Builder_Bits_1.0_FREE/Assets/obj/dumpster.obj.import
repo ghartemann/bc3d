@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bmmbxuyuo3ki5"
+path="res://.godot/imported/dumpster.obj-ae1d6c5294515bd01f169283769ef371.mesh"
+
+[deps]
+
+files=["res://.godot/imported/dumpster.obj-ae1d6c5294515bd01f169283769ef371.mesh"]
+
+source_file="res://assets/packs/KayKit_City_Builder_Bits_1.0_FREE/Assets/obj/dumpster.obj"
+dest_files=["res://.godot/imported/dumpster.obj-ae1d6c5294515bd01f169283769ef371.mesh", "res://.godot/imported/dumpster.obj-ae1d6c5294515bd01f169283769ef371.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
