@@ -1,0 +1,3 @@
+name/fr;name/en;price;price_multiplier;value;picture_path;description/fr;description/en
+Meilleur curseur;Better cursor;500;1.15;1;buffs/hand.png;Un curseur plus performant.;A more efficient cursor.
+Curseur en béton armé;Reinforced concrete cursor;2000;1.15;5;buffs/solidcursor.png;Un curseur en béton armé.;A reinforced concrete cursor.

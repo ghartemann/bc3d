@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://n2g14557wu0s"
+path="res://.godot/imported/bananatree.obj-815384181386d0635342c33d508b8cfd.mesh"
+
+[deps]
+
+files=["res://.godot/imported/bananatree.obj-815384181386d0635342c33d508b8cfd.mesh"]
+
+source_file="res://assets/models/plants/bananatree.obj"
+dest_files=["res://.godot/imported/bananatree.obj-815384181386d0635342c33d508b8cfd.mesh", "res://.godot/imported/bananatree.obj-815384181386d0635342c33d508b8cfd.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

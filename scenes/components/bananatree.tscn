@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=3 uid="uid://cgpgweqpl3alc"]
+
+[ext_resource type="ArrayMesh" uid="uid://n2g14557wu0s" path="res://assets/models/plants/bananatree.obj" id="1_sm4nn"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.020876, 5.90901e-17, 0.14854, 5.2318e-17, 0.15, -5.2318e-17, -0.14854, 4.45276e-17, -0.020876, 0, 0, 0)
+mesh = ExtResource("1_sm4nn")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.141828, -3.24346e-17, 0.0488352, 5.2318e-17, 0.15, -5.2318e-17, -0.0488352, 6.65008e-17, 0.141828, 1, 2.08165e-12, 2.08165e-12)
+mesh = ExtResource("1_sm4nn")
+skeleton = NodePath("../MeshInstance3D2")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.0569015, 0, 0.138788, 0, 0.15, 0, -0.138788, 0, 0.0569015, -1, 2.08165e-12, 2.08165e-12)
+mesh = ExtResource("1_sm4nn")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.0672177, 0, -0.134096, 0, 0.15, 0, 0.134096, 0, 0.0672177, 0, 0, 1)
+mesh = ExtResource("1_sm4nn")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.140149, 0, -0.0534618, 0, 0.15, 0, 0.0534618, 0, -0.140149, 1, 2.08165e-12, 1)
+mesh = ExtResource("1_sm4nn")
+skeleton = NodePath("../MeshInstance3D2")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.105704, 0, 0.106426, 0, 0.15, 0, -0.106426, 0, 0.105704, -1, 2.08165e-12, 1)
+mesh = ExtResource("1_sm4nn")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.112498, 0, -0.0992184, 0, 0.15, 0, 0.0992184, 0, 0.112498, 0, 0, -1)
+mesh = ExtResource("1_sm4nn")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 1, 2.08165e-12, -1)
+mesh = ExtResource("1_sm4nn")
+skeleton = NodePath("../MeshInstance3D2")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.00634413, 0, -0.149866, 0, 0.15, 0, 0.149866, 0, -0.00634413, -1, 2.08165e-12, -1)
+mesh = ExtResource("1_sm4nn")

@@ -1,0 +1,4 @@
+slug;name/fr;name/en;size;size/x-ignore;size/z-ignore;price;price_multiplier;value;picture_path;description/fr;description/en
+banana_farm;Bananeraie;Banana farm;3;3;3;50;1.13;1;todo;Une bananeraie. Un endroit où l'on produit des bananes. Il n'y a pas mille choses à dire dessus.;todo
+macaque_housing;Logement pour macaque;Macaque housing;1;1;1;200;1.14;2;todo;La maison d'un macaque. Elle est fournie avec un macaque qui va chercher des bananes. Il est très efficace, d'autant que le code du travail ne s'applique pas à lui (puisque c'est un macaque).;todo
+gorilla_housing;Hutte pour gorille;Gorilla hut;1;1;1;1200;1.15;7;todo;Un gorille et sa maison. Il fait à peu près la même chose que le macaque, mais en plus gros. Et en plus cher. Pas non plus concerné par le code du travail.;todo
