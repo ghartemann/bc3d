@@ -1,11 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://7lmxod8kvv7a"]
+[gd_scene load_steps=9 format=3 uid="uid://7lmxod8kvv7a"]
 
 [ext_resource type="Script" path="res://scripts/building.gd" id="1_oswt5"]
-[ext_resource type="PackedScene" uid="uid://g87jbd1ueowv" path="res://assets/packs/KayKit_City_Builder_Bits_1.0_FREE/Assets/gltf/building_A.gltf" id="2_iv1i5"]
-[ext_resource type="PackedScene" uid="uid://dg3lhf6w7r8fm" path="res://assets/packs/KayKit_City_Builder_Bits_1.0_FREE/Assets/gltf/building_B.gltf" id="3_1qrfe"]
-[ext_resource type="PackedScene" uid="uid://d2eishrtpdvbs" path="res://assets/packs/KayKit_City_Builder_Bits_1.0_FREE/Assets/gltf/building_C.gltf" id="4_f4hll"]
-[ext_resource type="PackedScene" uid="uid://btjdog2g2rqi" path="res://assets/packs/KayKit_City_Builder_Bits_1.0_FREE/Assets/gltf/building_D.gltf" id="5_yiuwl"]
-[ext_resource type="PackedScene" uid="uid://b0pcuc6a6e4m2" path="res://assets/packs/KayKit_City_Builder_Bits_1.0_FREE/Assets/gltf/building_E.gltf" id="6_xfft5"]
 [ext_resource type="PackedScene" uid="uid://p83k0c2j26o2" path="res://assets/stylized_tent/scene.gltf" id="7_h8q12"]
 [ext_resource type="PackedScene" uid="uid://cgpgweqpl3alc" path="res://scenes/components/bananatree.tscn" id="8_42j7l"]
 [ext_resource type="Script" path="res://assets/stylized_tent/scene.gd" id="8_b5urg"]
@@ -45,28 +40,9 @@ surface_material_override/0 = SubResource("StandardMaterial3D_3erjl")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="models/default_cube/StaticBody3D"]
 shape = SubResource("BoxShape3D_cbaqj")
 
-[node name="clicker2" parent="models" instance=ExtResource("2_iv1i5")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
-visible = false
-
-[node name="banana_treeold" parent="models" instance=ExtResource("3_1qrfe")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
-visible = false
-
-[node name="macaque" parent="models" instance=ExtResource("4_f4hll")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
-visible = false
-
-[node name="gorilla" parent="models" instance=ExtResource("5_yiuwl")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
-visible = false
-
-[node name="building_E2" parent="models" instance=ExtResource("6_xfft5")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
-visible = false
-
 [node name="clicker" parent="models" instance=ExtResource("7_h8q12")]
 transform = Transform3D(0.006, 0, 0, 0, 0.006, 0, 0, 0, 0.006, 0, 0.486282, 0)
+visible = false
 script = ExtResource("8_b5urg")
 
 [node name="baboon" parent="models/clicker" instance=ExtResource("8_oj5y8")]

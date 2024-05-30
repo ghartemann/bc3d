@@ -1,6 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://cgpgweqpl3alc"]
+[gd_scene load_steps=4 format=3 uid="uid://cgpgweqpl3alc"]
 
 [ext_resource type="ArrayMesh" uid="uid://n2g14557wu0s" path="res://assets/models/plants/bananatree.obj" id="1_sm4nn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d70gj"]
+albedo_color = Color(0.529412, 0.454902, 0.156863, 0.607843)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_jox2r"]
+material = SubResource("StandardMaterial3D_d70gj")
+size = Vector2(3, 3)
 
 [node name="Node3D" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00347841, 0)
@@ -43,3 +50,6 @@ skeleton = NodePath("../MeshInstance3D2")
 [node name="MeshInstance3D9" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.00634413, 0, -0.149866, 0, 0.15, 0, 0.149866, 0, -0.00634413, -1, 2.08165e-12, -1)
 mesh = ExtResource("1_sm4nn")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_jox2r")

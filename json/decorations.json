@@ -1,0 +1,16 @@
+[
+	{
+		"slug": "road_straight",
+		"name": {
+			"fr": "Route",
+			"en": "Road"
+		},
+		"description": {
+			"fr": "",
+			"en": ""
+		},
+		"size": 1,
+		"price": 0,
+		"picture_path": "clickers/clicker.png"
+	}
+]

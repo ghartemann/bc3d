@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://bqjothqoyp54o"]
+
+[ext_resource type="Script" path="res://scripts/building.gd" id="1_qo4pl"]
+[ext_resource type="PackedScene" uid="uid://o1jgrcwmu8uu" path="res://assets/packs/KayKit_City_Builder_Bits_1.0_FREE/Assets/gltf/road_straight.gltf" id="2_llm0l"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_kppcc"]
+size = Vector3(3, 1, 3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3erjl"]
+albedo_color = Color(1, 0.568627, 0.486275, 1)
+roughness = 0.0
+rim_tint = 1.0
+refraction_scale = 0.44
+grow_amount = 0.235
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cbaqj"]
+
+[node name="Building" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
+script = ExtResource("1_qo4pl")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+
+[node name="models" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="default_cube" type="MeshInstance3D" parent="models"]
+unique_name_in_owner = true
+visible = false
+mesh = SubResource("BoxMesh_kppcc")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_3erjl")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="models/default_cube"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="models/default_cube/StaticBody3D"]
+shape = SubResource("BoxShape3D_cbaqj")
+
+[node name="road_straight" parent="models" instance=ExtResource("2_llm0l")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.03, 0)

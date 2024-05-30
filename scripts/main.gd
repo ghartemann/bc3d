@@ -1,6 +1,7 @@
 extends Node3D
 
 var button_clicker: PackedScene = preload("res://scenes/components/button_clicker.tscn")
+var button_decoration: PackedScene = preload("res://scenes/components/button_decoration.tscn")
 var import: Script = preload("res://scripts/utils/import.gd")
 
 var language = 'fr'
@@ -61,6 +62,10 @@ func _on_build(clicker):
 	%World.toggle_build_mode(true, clicker)
 
 
+func _on_decoration(decoration):
+	%World.toggle_decoration_mode(true, decoration)
+
+
 func _on_button_main_pressed() -> void:
 	increment_via_bpc()
 
@@ -96,6 +101,23 @@ func instantiate_buttons():
 			%ClickerSection.add_child(button)
 		elif clicker.type == 'bpc':
 			%BuffSection.add_child(button)
+	
+	
+	var imported_decorations = import.import_json("res://json/decorations.json")
+	
+	for decoration in imported_decorations:
+		var button = button_decoration.instantiate()
+		
+		button.decoration_name = decoration.name[language]
+		button.decoration_slug = decoration.slug
+		button.price = decoration.price
+		button.size_map = decoration.size
+		button.picture_path = decoration.picture_path
+		button.description = decoration.description[language]
+		
+		button.get_node('%Button').disabled = false
+		
+		%DecoSection.add_child(button)
 
 
 func increment_bananas(amount: float) -> void:

@@ -110,8 +110,19 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_constants/separation = 128
 
-[node name="ClickerSection" type="GridContainer" parent="Control2/VBoxContainer/Control/Panel/HBoxContainer"]
+[node name="TabContainer" type="TabContainer" parent="Control2/VBoxContainer/Control/Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ClickerSection" type="GridContainer" parent="Control2/VBoxContainer/Control/Panel/HBoxContainer/TabContainer"]
 unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 8
+
+[node name="DecoSection" type="GridContainer" parent="Control2/VBoxContainer/Control/Panel/HBoxContainer/TabContainer"]
+unique_name_in_owner = true
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 columns = 8
