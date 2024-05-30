@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://7lmxod8kvv7a"]
+[gd_scene load_steps=14 format=3 uid="uid://7lmxod8kvv7a"]
 
 [ext_resource type="Script" path="res://scripts/building.gd" id="1_oswt5"]
 [ext_resource type="PackedScene" uid="uid://g87jbd1ueowv" path="res://assets/packs/KayKit_City_Builder_Bits_1.0_FREE/Assets/gltf/building_A.gltf" id="2_iv1i5"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://b0pcuc6a6e4m2" path="res://assets/packs/KayKit_City_Builder_Bits_1.0_FREE/Assets/gltf/building_E.gltf" id="6_xfft5"]
 [ext_resource type="PackedScene" uid="uid://p83k0c2j26o2" path="res://assets/stylized_tent/scene.gltf" id="7_h8q12"]
 [ext_resource type="PackedScene" uid="uid://cgpgweqpl3alc" path="res://scenes/components/bananatree.tscn" id="8_42j7l"]
+[ext_resource type="Script" path="res://assets/stylized_tent/scene.gd" id="8_b5urg"]
+[ext_resource type="PackedScene" uid="uid://bd2qfd2upxahv" path="res://assets/models/animals/low_poly_baboon.glb" id="8_oj5y8"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_kppcc"]
 size = Vector3(3, 1, 3)
@@ -65,6 +67,14 @@ visible = false
 
 [node name="clicker" parent="models" instance=ExtResource("7_h8q12")]
 transform = Transform3D(0.006, 0, 0, 0, 0.006, 0, 0, 0, 0.006, 0, 0.486282, 0)
-visible = false
+script = ExtResource("8_b5urg")
+
+[node name="baboon" parent="models/clicker" instance=ExtResource("8_oj5y8")]
+transform = Transform3D(-7.86738, 0, 1.45061, 0, 8, 0, -1.45061, 0, -7.86738, 12.2018, -81.7946, 60.5229)
+
+[node name="Timer" type="Timer" parent="models/clicker/baboon"]
+wait_time = 3.0
+autostart = true
 
 [node name="banana_tree" parent="models" instance=ExtResource("8_42j7l")]
+visible = false

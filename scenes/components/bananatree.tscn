@@ -3,6 +3,7 @@
 [ext_resource type="ArrayMesh" uid="uid://n2g14557wu0s" path="res://assets/models/plants/bananatree.obj" id="1_sm4nn"]
 
 [node name="Node3D" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00347841, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.020876, 5.90901e-17, 0.14854, 5.2318e-17, 0.15, -5.2318e-17, -0.14854, 4.45276e-17, -0.020876, 0, 0, 0)

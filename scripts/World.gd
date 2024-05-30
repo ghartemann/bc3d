@@ -93,10 +93,11 @@ func create_building(pos: Vector3, type: String):
 	else:
 		print("Building ", selected_clicker.slug, " at ", requested_pos)
 		
-		var n = selected_clicker.size_map
+		var half_size = ((selected_clicker.size_map - 1) / 2)
+		
 		var occupied_spaces = [
-			Vector3(requested_pos.x - (1 if n == 3 else 0), 0, requested_pos.z - (1 if n == 3 else 0)),
-			Vector3(requested_pos.x + (1 if n == 3 else 0), 0, requested_pos.z + (1 if n == 3 else 0))
+			Vector3(requested_pos.x - half_size, 0, requested_pos.z - half_size),
+			Vector3(requested_pos.x + half_size, 0, requested_pos.z + half_size)
 		]
 		
 		built_clickers_pos.push_back({
